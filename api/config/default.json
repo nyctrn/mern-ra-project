@@ -1,0 +1,19 @@
+// {
+//     "mongoURI":"mongodb://root:pass12345@20.71.242.97:27017",    
+//     "jwtSecret": "secret"
+// }
+
+{
+    "mongoURI":"mongodb+srv://ms123:ms123@cluster0.izx90.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",    
+    "jwtSecret": "secret"
+}
+
+// {
+//     "mongoURI": "mongodb://root:pass12345@20.71.242.97:27017",
+//     "jwtSecret": "secret"
+// }
+
+// {
+//     "mongoURI": "mongodb://root:pass12345@10.10.10.97:27017",
+//     "jwtSecret": "secret"
+// }

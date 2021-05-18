@@ -1,0 +1,15 @@
+ui/node_modules/
+api/node_modules/
+
+ui/client/build
+
+ui/.DS_Store
+ui/client/.env.local
+ui/client/.env.development.local
+ui/client/.env.test.local
+ui/client/.env.production.local
+
+ui/npm-debug.log*
+ui/yarn-debug.log*
+ui/npm-error.log*
+

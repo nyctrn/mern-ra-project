@@ -1,0 +1,9 @@
+// {
+//         "mongoURI":"mongodb://root:pass12345@10.1.0.4:27017",    
+//         "jwtSecret": "secret"
+// }
+    
+// {
+//         "mongoURI": "mongodb://root:pass12345@20.71.242.97:27017",
+//         "jwtSecret": "secret"
+// }
