@@ -59,10 +59,37 @@ const AppForm = (props) => {
     firstName: "",
     lastName: "",
     email: "",
+    fName: "",
+    mName: "",
+    birthday: "",
+    citizenship: "",
+    idNumber: "",
+    municipality: "",
+    city: "",
+    address: "",
+    postalCode: "",
+    phoneNumber: "",
+    mobileNumber: "",
   });
 
-  const { firstName, lastName, email } = application;
+  const {
+    firstName,
+    lastName,
+    email,
+    fName,
+    mName,
+    birthday,
+    citizenship,
+    idNumber,
+    municipality,
+    city,
+    address,
+    postalCode,
+    phoneNumber,
+    mobileNumber,
+  } = application;
 
+  console.log(application);
   const onChange = (e) =>
     setApplication({ ...application, [e.target.name]: e.target.value });
 
@@ -77,6 +104,17 @@ const AppForm = (props) => {
         applicationId: uuid().slice(0, 13),
         firstName,
         lastName,
+        fName,
+        mName,
+        birthday,
+        citizenship,
+        idNumber,
+        municipality,
+        city,
+        address,
+        postalCode,
+        phoneNumber,
+        mobileNumber,
         email,
         currentUser,
       });
@@ -86,6 +124,23 @@ const AppForm = (props) => {
       }, 1800);
     }
   };
+
+  const formFields = [
+    { fieldName: "firstName", labeName: "Όνομα" },
+    { fieldName: "lastName", labeName: "Επώνυμο" },
+    { fieldName: "fName", labeName: "Πατρώνυμο" },
+    { fieldName: "mName", labeName: "Μητρώνυμο" },
+    { fieldName: "birthday", labeName: "Ημερομηνία Γέννησης" },
+    { fieldName: "citizenship", labeName: "Υπηκοότητα" },
+    { fieldName: "idNumber", labeName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
+    { fieldName: "municipality", labeName: "Δήμος" },
+    { fieldName: "city", labeName: "Πόλη" },
+    { fieldName: "address", labeName: "Διεύθυνση κατοικίας" },
+    { fieldName: "postalCode", labeName: "Τ.Κ." },
+    { fieldName: "phoneNumber", labeName: "Τηλέφωνο" },
+    { fieldName: "mobileNumber", labeName: "Κινητό" },
+    { fieldName: "email", labeName: "E-mail" },
+  ];
 
   const classes = useStyles();
 
@@ -119,13 +174,33 @@ const AppForm = (props) => {
                 <Typography component="h1" variant="h5">
                   Αίτηση Συνταξιοδότησης
                 </Typography>
+
                 <form onSubmit={onSubmit} className={classes.form}>
                   <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                    {formFields.map((field) => {
+                      return (
+                        <Grid key={field.fieldName} item xs={12}>
+                          <TextField
+                            value={application[`${field.fieldName}`]}
+                            onChange={onChange}
+                            autoComplete={field.fieldName}
+                            name={field.fieldName}
+                            variant="outlined"
+                            required
+                            fullWidth
+                            id={field.fieldName}
+                            label={field.labeName}
+                            autoFocus
+                            size="small"
+                          />
+                        </Grid>
+                      );
+                    })}
+                    {/* <Grid item xs={12}>
                       <TextField
                         value={firstName}
                         onChange={onChange}
-                        autoComplete="fname"
+                        autoComplete="firstName"
                         name="firstName"
                         variant="outlined"
                         required
@@ -146,7 +221,161 @@ const AppForm = (props) => {
                         id="lastName"
                         label="Επώνυμο"
                         name="lastName"
-                        autoComplete="lname"
+                        autoComplete="lastName"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={fName}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="fName"
+                        label="Πατρώνυμο"
+                        name="fName"
+                        autoComplete="fName"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={mName}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="mName"
+                        label="Μητρώνυμο"
+                        name="mName"
+                        autoComplete="mName"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={birthday}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="birthday"
+                        label="Ημερομηνία Γέννησης"
+                        name="birthday"
+                        autoComplete="birthday"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={citizenship}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="citizenship"
+                        label="Υπηκοότητα"
+                        name="citizenship"
+                        autoComplete="citizenship"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={idNumber}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="idNumber"
+                        label="Αριθμός Ταυτότητας/Διαβατηρίου"
+                        name="idNumber"
+                        autoComplete="idNumber"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={municipality}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="municipality"
+                        label="Δήμος"
+                        name="municipality"
+                        autoComplete="municipality"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={city}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="city"
+                        label="Πόλη"
+                        name="city"
+                        autoComplete="city"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={address}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="address"
+                        label="Διεύθυνση κατοικίας"
+                        name="address"
+                        autoComplete="address"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={postalCode}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="postalCode"
+                        label="Τ.Κ."
+                        name="postalCode"
+                        autoComplete="postalCode"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={phoneNumber}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="phoneNumber"
+                        label="Τηλέφωνο"
+                        name="phoneNumber"
+                        autoComplete="phoneNumber"
+                        size="small"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        value={mobileNumber}
+                        onChange={onChange}
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="mobileNumber"
+                        label="Κινητό"
+                        name="mobileNumber"
+                        autoComplete="mobileNumber"
                         size="small"
                       />
                     </Grid>
@@ -163,35 +392,7 @@ const AppForm = (props) => {
                         autoComplete="email"
                         size="small"
                       />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        value={email}
-                        onChange={onChange}
-                        variant="outlined"
-                        required
-                        fullWidth
-                        id="email"
-                        label="E-mail"
-                        name="email"
-                        autoComplete="email"
-                        size="small"
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        value={email}
-                        onChange={onChange}
-                        variant="outlined"
-                        required
-                        fullWidth
-                        id="email"
-                        label="E-mail"
-                        name="email"
-                        autoComplete="email"
-                        size="small"
-                      />
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                   <Button
                     type="submit"
