@@ -160,10 +160,15 @@ const AuthState = (props) => {
 
   ///
 
-  const fetchApplications = async () => {
-    // console.log("test");
+  const fetchApplications = async (userId) => {
+    const config = {
+      params: {
+        userId,
+      },
+    };
+
     try {
-      const res = await axios.get(apiUrl + "/applications");
+      const res = await axios.get(apiUrl + "/applications", config);
 
       dispatch({
         type: "FETCH_APPLICATIONS",

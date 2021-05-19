@@ -7,7 +7,7 @@ const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
 
-// POST /register
+// POST
 router.post(
   "/",
   [
@@ -61,12 +61,9 @@ router.post(
 
       const payload = {
         user: {
-          // id: user.id,
           id: user.id,
         },
       };
-
-      // res.send("test");
 
       jwt.sign(
         payload,

@@ -52,10 +52,6 @@ const UserSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // application_status: {
-  //   type: String,
-  //   default: "δεν έχει γίνει αίτηση",
-  // },
   title: {
     type: Number,
     default: 0,

@@ -73,7 +73,7 @@ const Applications = (props) => {
           return list.filter((user) => user.application);
         };
 
-        fetchApplications();
+        fetchApplications(currentUser._id);
 
         if (filterApplications(state.users).length > listLen) {
           setMuiState({
@@ -100,8 +100,7 @@ const Applications = (props) => {
     // eslint-disable-next-line
   }, [state.users]);
 
-  const filteredUsers = users.filter((appl) => appl.application);
-
+  // console.log(users);
   const [applicant, setApplicant] = useState(null);
 
   const openApplication = (event, appl) => {
@@ -143,7 +142,7 @@ const Applications = (props) => {
             <h1>Αιτήσεις</h1>
             {loading ? (
               <CircularProgress style={{ margin: "5% 50%" }} />
-            ) : filteredUsers.length ? (
+            ) : users.length ? (
               <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                   <Table stickyHeader aria-label="sticky table">
@@ -161,7 +160,7 @@ const Applications = (props) => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {filteredUsers
+                      {users
                         .slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
@@ -200,7 +199,7 @@ const Applications = (props) => {
                 <TablePagination
                   rowsPerPageOptions={[10, 25, 100]}
                   component="div"
-                  count={filteredUsers.length}
+                  count={users.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={handleChangePage}
