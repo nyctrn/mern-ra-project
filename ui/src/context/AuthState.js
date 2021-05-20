@@ -141,19 +141,21 @@ const AuthState = (props) => {
     try {
       const res = await axios.post(apiUrl + "/application", formData, config);
       // console.log(formData);
-      // console.log(res);
+      console.log(res, "res formedit");
       dispatch({
         type: "FORM_EDIT",
-        payload: res.data,
+        payload: res,
       });
 
       // loadUser();
     } catch (error) {
+      // console.log(error, "autherror");
+      console.log(error.response.data.errors, "error data msg autherror");
       // console.log("error");
       // console.log(error);
       dispatch({
-        type: "FORM_APPLICATION_FAIL",
-        payload: error.response.data.msg,
+        type: "FORM_EDIT_FAIL",
+        payload: error.response.data.errors,
       });
     }
   };

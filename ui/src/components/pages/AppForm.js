@@ -55,6 +55,9 @@ const AppForm = (props) => {
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
 
+  // console.log(error, "error appform");
+  // console.log(currentUser, "curr user appform");
+
   const [application, setApplication] = useState({
     firstName: "",
     lastName: "",
@@ -89,7 +92,7 @@ const AppForm = (props) => {
     mobileNumber,
   } = application;
 
-  console.log(application);
+  // console.log(application);
   const onChange = (e) =>
     setApplication({ ...application, [e.target.name]: e.target.value });
 
@@ -119,9 +122,11 @@ const AppForm = (props) => {
         currentUser,
       });
 
-      setTimeout(() => {
-        props.history.push("/");
-      }, 1800);
+      if (!error) {
+        setTimeout(() => {
+          props.history.push("/");
+        }, 1800);
+      }
     }
   };
 
@@ -186,7 +191,7 @@ const AppForm = (props) => {
                             autoComplete={field.fieldName}
                             name={field.fieldName}
                             variant="outlined"
-                            required
+                            // required
                             fullWidth
                             id={field.fieldName}
                             label={field.labeName}

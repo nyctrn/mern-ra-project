@@ -28,8 +28,9 @@ const authReducer = (state, action) => {
     case "FORM_EDIT":
       return {
         ...state,
+        currentUser: action.payload.data,
+        error: "no errors",
       };
-
     case "REGISTER_FAIL":
     case "AUTH_ERROR":
     case "LOGIN_FAIL":
@@ -41,6 +42,12 @@ const authReducer = (state, action) => {
         isAuthenticated: false,
         // loading: true,
         currentUser: null,
+        error: action.payload,
+      };
+    case "FORM_APPLICATION_FAIL":
+    case "FORM_EDIT_FAIL":
+      return {
+        ...state,
         error: action.payload,
       };
     case "CLEAR_ERRORS":
