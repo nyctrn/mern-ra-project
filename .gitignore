@@ -1,7 +1,12 @@
-ui/node_modules/
 api/node_modules/
+api/.gitignore
+api/.git/
 
+
+ui/node_modules/
 ui/client/build
+ui/.gitignore
+ui/.git/
 
 ui/.DS_Store
 ui/client/.env.local
