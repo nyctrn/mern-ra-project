@@ -44,6 +44,7 @@ const App = () => {
                 component={Applications}
               />
               <PrivateRoute exact path="/folder" component={Folder} />
+              <p>API_URL: {window._env_.API_URL}</p>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/register" component={Register} />

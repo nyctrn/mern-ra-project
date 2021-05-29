@@ -1,10 +1,23 @@
-const express = require("express");
-const connectDB = require("./config/db");
-// const path = require("path");
-const cors = require("cors");
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
 
+var credentials = "";
+
+if (process.env.NODE_ENV === "production") {
+  const envKey = process.env.KEY;
+  const envCert = process.env.CERT;
+  credentials = { key: envKey, cert: envCert };
+}
+
+const express = require("express");
+const connectDB = require("./database/mongoDB");
+const cors = require("cors");
+const https = require("https");
+const http = require("http");
 const app = express();
 
+// mongodb
 connectDB();
 
 // middleware
@@ -17,15 +30,11 @@ app.use("/login", require("./routes/login"));
 app.use("/application", require("./routes/application"));
 app.use("/applications", require("./routes/applications"));
 
-// for production (????)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-
-//   app.get("*", (req, res) =>
-//     res.sendFile(path.resolve(__dirname, "client", "builld", "index.html"))
-//   );
-// }
-
 const PORT = process.env.PORT || 6050;
 
-app.listen(PORT, () => console.log(`server is running on: ${PORT}`));
+const server =
+  process.env.NODE_ENV === "development"
+    ? http.createServer(app)
+    : https.createServer(credentials, app);
+
+server.listen(PORT, () => console.log(`server is running on: ${PORT}`));

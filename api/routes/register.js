@@ -1,8 +1,14 @@
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
+
+const envSecret = process.env.JWTSECRET;
+const envCode = process.env.REGISTRATIONCODE;
+
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
@@ -41,7 +47,7 @@ router.post(
           email,
           password,
         });
-      } else if (code === "1234512345") {
+      } else if (code === envCode) {
         user = new User({
           firstName,
           lastName,
@@ -67,7 +73,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        envSecret,
         {
           expiresIn: 36000,
         },

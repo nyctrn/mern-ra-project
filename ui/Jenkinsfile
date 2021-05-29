@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+              // Get some code from a GitHub repository
+                git credentialsId: '9dc8a49f-84a3-443e-a5cb-7c6d269d18ec', url: 'https://github.com/nyctrn/react-app-project-ui.git'  
+            }
+        }
+
+        stage('docker build and push') {
+            environment {
+                DOCKER_TOKEN = credentials('docker-push-secret')
+                DOCKER_USER = 'nyctrn'
+                DOCKER_SERVER = 'ghcr.io'
+                DOCKER_PREFIX = 'ghcr.io/nyctrn/react-app-project-ui'
+            }
+
+            steps {
+                sh '''
+                    HEAD_COMMIT=$(git rev-parse --short HEAD)
+                    TAG=$HEAD_COMMIT-$BUILD_ID
+                    docker build --rm -t $DOCKER_PREFIX:$TAG -t $DOCKER_PREFIX:latest -f Dockerfile .  
+                '''
+
+                
+                sh '''
+                    echo $DOCKER_TOKEN | docker login $DOCKER_SERVER -u $DOCKER_USER --password-stdin
+                    docker push ghcr.io/nyctrn/react-app-project-ui --all-tags
+                '''
+            }
+        
+        }
+        
+        stage('deploy to k8s') {
+            steps {
+                sh '''
+                    kubectl config use-context microk8s
+                    kubectl delete deploy ui-deployment
+                    ls *.yml | while read fl ; do kubectl apply -f $fl; done
+                '''
+            }
+        }
+    }
+}

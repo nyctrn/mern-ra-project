@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: ui
+  template:
+    metadata:
+      labels:
+        component: ui
+    spec:
+      containers:
+        - name: ui
+          image: "ghcr.io/nyctrn/react-app-project-ui:latest"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: react-app-api-url
+            - configMapRef:
+                name: react-test
+          # envFrom:
+          #   - configMapRef:
+          #       name: fastapi-config
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com

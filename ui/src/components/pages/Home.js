@@ -6,6 +6,21 @@ import Slide from "@material-ui/core/Slide";
 import { Container } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 
+// import dotenv from "dotenv";
+// import dotenvExpand from "dotenv-expand";
+
+// const config = dotenv.config();
+
+// dotenvExpand(config);
+
+// console.log(config);
+
+// console.log(process.env.REACT_APP_API_URL, "REACT_APP_API_URL");
+
+// console.log(process.env, "process.env");
+
+// console.log(process.env.REACT_APP_TEST, "test ");
+
 const Home = () => {
   const authContext = useContext(AuthContext);
 

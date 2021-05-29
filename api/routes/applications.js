@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
+
+const mailhogAddress =
+  process.env.NODE_ENV === "development" ? "localhost" : "mailhog-service";
+
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
@@ -9,8 +16,7 @@ const { route } = require("./application");
 //////////// MailHog /////////////
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
-  // host: "mailhog",
-  host: "localhost",
+  host: mailhogAddress,
   port: 1025,
 });
 

@@ -4,7 +4,7 @@ const VersionNumber = () => {
   const [versionNumber, setVersionNumber] = useState(" ");
 
   setTimeout(() => {
-    setVersionNumber("v0.5.5");
+    setVersionNumber("v0.5.8");
   }, 200);
   return (
     <div

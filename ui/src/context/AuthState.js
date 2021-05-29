@@ -4,7 +4,11 @@ import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import setAuthToken from "../utils/setAuthToken";
 
-const apiUrl = `http://localhost:6050`;
+let apiUrl = process.env.API_URL;
+
+// if (process.env.NODE_ENV === "production") {
+//   apiUrl = "https://marioskour.cloudns.cl:32500";
+// }
 
 const AuthState = (props) => {
   const initialState = {
@@ -125,7 +129,7 @@ const AuthState = (props) => {
       // console.log(error);
       dispatch({
         type: "FORM_APPLICATION_FAIL",
-        payload: error.response.data.msg,
+        payload: error.response.data.errors,
       });
     }
   };
@@ -246,7 +250,6 @@ const AuthState = (props) => {
   };
 
   ///
-
   // const notificationFunction = (
   //   list,
   //   setListLen,
@@ -356,7 +359,6 @@ const AuthState = (props) => {
   //     return () => clearInterval(interval);
   //   }
   // };
-
   ////////////////////////////////////
 
   return (

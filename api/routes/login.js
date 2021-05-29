@@ -1,8 +1,13 @@
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
+
+const envSecret = process.env.JWTSECRET;
+
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 
@@ -58,7 +63,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        envSecret,
         {
           expiresIn: 36000,
         },

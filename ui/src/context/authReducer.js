@@ -24,6 +24,7 @@ const authReducer = (state, action) => {
       return {
         ...state,
         applicationSubmission: true,
+        error: "no errors",
       };
     case "FORM_EDIT":
       return {
