@@ -359,7 +359,7 @@ const AuthState = (props) => {
   //     return () => clearInterval(interval);
   //   }
   // };
-  ////////////////////////////////////
+  ///////////////////////////////////
 
   return (
     <AuthContext.Provider
