@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: api
+  template:
+    metadata:
+      labels:
+        component: api
+    spec:
+      containers:
+        - name: api
+          image: 'ghcr.io/nyctrn/api:latest'
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                  name: mongodb-user
+            - secretRef:
+                  name: api-https-secret
+            - secretRef:
+                  name: jwt-secret
+            - secretRef:
+                  name: registration-code
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com

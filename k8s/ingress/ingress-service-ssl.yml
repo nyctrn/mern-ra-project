@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+spec:
+  rules:
+  - host: "marioskour.cloudns.cl"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: ui-service 
+            port:
+              number: 80
+  tls:
+    - hosts: 
+      - "marioskour.cloudns.cl"
+      secretName: tls-secret
