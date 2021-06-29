@@ -14,6 +14,7 @@ ui/client/.env.local
 ui/client/.env.development.local
 ui/client/.env.test.local
 ui/client/.env.production.local
+!k8s/ui
 
 ui/npm-debug.log*
 ui/yarn-debug.log*
