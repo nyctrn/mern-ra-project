@@ -142,7 +142,7 @@ const Register = (props) => {
           variant="h6"
           style={{ fontSize: "1.5rem", width: "31vw", textAlign: "center" }}
         >
-          Δημιουργία λογαρισμού{" "}
+          Δημιουργία λογαριασμού{" "}
           {isAuthenticated && (
             <>
               <span>επιτυχής!</span>
