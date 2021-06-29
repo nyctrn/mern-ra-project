@@ -20,11 +20,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: react-app-api-url
-            - configMapRef:
-                name: react-test
-          # envFrom:
-          #   - configMapRef:
-          #       name: fastapi-config
           imagePullPolicy: Always
       imagePullSecrets:
         - name: dockerconfigjson-github-com

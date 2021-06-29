@@ -6,8 +6,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated } = authContext;
 
-  // console.log(rest);
-
   return (
     <div style={{ margin: "0 10% 0 10%" }}>
       <Route

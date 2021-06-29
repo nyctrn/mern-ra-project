@@ -1,6 +1,4 @@
 const authReducer = (state, action) => {
-  // console.log(action, "authreducer action");
-  // console.log(action.payload, "authreducer action payload");
   switch (action.type) {
     case "USER_LOADED":
       return {
@@ -56,7 +54,7 @@ const authReducer = (state, action) => {
         ...state,
         error: null,
       };
-    case "FETCH_APPLICATIONS": // change to users.applications?
+    case "FETCH_APPLICATIONS":
       return {
         ...state,
         users: action.payload,

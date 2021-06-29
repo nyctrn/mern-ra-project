@@ -24,22 +24,12 @@ pipeline {
                     docker build --rm -t $DOCKER_PREFIX:$TAG -t $DOCKER_PREFIX:latest -f Dockerfile .  
                 '''
 
-                // sh '''
-                //     docker build -t $DOCKER_PREFIX:latest -f Dockerfile .
- 
-                // '''
-
-
 
                 sh '''
                     echo $DOCKER_TOKEN | docker login $DOCKER_SERVER -u $DOCKER_USER --password-stdin
                     docker push ghcr.io/nyctrn/react-app-project-api --all-tags
                 '''
 
-                // sh '''
-                //     echo $DOCKER_TOKEN | docker login $DOCKER_SERVER -u $DOCKER_USER --password-stdin
-                //     docker push $DOCKER_PREFIX:latest
-                // '''
             }
         
         }

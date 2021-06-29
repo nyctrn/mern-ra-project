@@ -36,7 +36,6 @@ const Login = (props) => {
   const authContext = useContext(AuthContext);
 
   const { login, error, clearErrors, isAuthenticated, state } = authContext;
-  // console.log(state, "state Login");
 
   useEffect(() => {
     if (isAuthenticated && state.currentUser.title) {
@@ -49,18 +48,20 @@ const Login = (props) => {
       }, 1400);
     }
 
-    // console.log(state, "state Login");
-    // console.log(user, "user");
-    // console.log(user.type, "user type");
-    // console.log(state.user, "state user type");
-    // console.log(error);
     if (error) {
-      // console.log(error, "react");
       // setAlert(error, "danger");
       setTimeout(() => {
         clearErrors();
       }, 3000);
     }
+
+    if (error) {
+      setUser({
+        email: "",
+        password: "",
+      });
+    }
+
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
 
@@ -73,7 +74,7 @@ const Login = (props) => {
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
       // setAlert("fill in all fields");  --> fix alerts
@@ -81,11 +82,6 @@ const Login = (props) => {
       login({
         email,
         password,
-      });
-
-      setUser({
-        email: "",
-        password: "",
       });
     }
   };
@@ -113,9 +109,9 @@ const Login = (props) => {
                   transitionDelay: "0.3s",
                 }
               : {
-                  transitionDuration: "0.5s",
+                  transitionDuration: "0.0s",
                   transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.3s",
+                  transitionDelay: "0.0s",
                 }
           }
           className={classes.avatar}
@@ -137,59 +133,60 @@ const Login = (props) => {
             </>
           )}
         </Typography>
-        {!isAuthenticated && (
-          <form onSubmit={onSubmit} className={classes.form}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  value={email}
-                  onChange={onChange}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="E-mail"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={password}
-                  onChange={onChange}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Κωδικός χρήστη"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  // minLength="6"
-                />
-              </Grid>
+        {/* {!isAuthenticated && ( */}
+        <form onSubmit={onSubmit} className={classes.form}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                value={email}
+                onChange={onChange}
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="E-mail"
+                name="email"
+                autoComplete="email"
+                disabled={isAuthenticated}
+              />
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
+            <Grid item xs={12}>
+              <TextField
+                value={password}
+                onChange={onChange}
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Κωδικός χρήστη"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                disabled={isAuthenticated}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            ΣΥΝΔΕΣΗ
+          </Button>{" "}
+          {error && (
+            <div
+              style={{
+                float: "right",
+              }}
             >
-              ΣΥΝΔΕΣΗ
-            </Button>{" "}
-            {error && (
-              <div
-                style={{
-                  float: "right",
-                }}
-              >
-                Λάθος στοιχεία!
-                <Close style={{ color: "red", verticalAlign: "bottom" }} />
-              </div>
-            )}
-          </form>
-        )}
+              Λάθος στοιχεία!
+              <Close style={{ color: "red", verticalAlign: "bottom" }} />
+            </div>
+          )}
+        </form>
+        {/* )} */}
       </div>
     </Container>
   );

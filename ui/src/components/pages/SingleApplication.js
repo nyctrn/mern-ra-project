@@ -22,7 +22,6 @@ const SingleApplication = ({ applicant }) => {
 
   const [declineOrRejectSucess, setDeclineOrRejectSucess] = useState(null);
 
-  //   console.log(applicant);
   const handleApplications = async (event) => {
     if (event.target.innerText === "ΑΠΟΔΟΧΗ") {
       acceptApplications({
@@ -31,7 +30,6 @@ const SingleApplication = ({ applicant }) => {
         status: "δεκτή",
       });
     } else {
-      // console.log(0);
       rejectApplications({
         _id: applicant._id,
         status: "μη δεκτή",
@@ -54,17 +52,13 @@ const SingleApplication = ({ applicant }) => {
     }
   };
 
-  //   const applicantsDetails = [
-  //      email
-  //   ]
+  console.log(applicant);
 
   return (
-    <Container maxWidth="xl" style={{ height: "50vh" }}>
+    <Container maxWidth="xl" style={{ height: "70vh" }}>
+      <h3 style={{}}>ID αίτησης: {applicant.application.applicationId}</h3>
       <h2>Στοιχεία αιτούντα:</h2>
-      <hr />
-      <h3 style={{ textAlign: "center", float: "right" }}>
-        ID αίτησης: {applicant.application.applicationId}
-      </h3>
+      {/* <hr /> */}
       <div>
         <ul style={{ listStyle: "none" }}>
           <li>
@@ -76,15 +70,73 @@ const SingleApplication = ({ applicant }) => {
           </li>
           <li>
             <p>
-              Όνοματεπώνυμο: {applicant.application.firstName}{" "}
-              {applicant.application.lastName}
+              Πατρώνυμο: {applicant.application.fName}
+              <Divider />
             </p>
           </li>
           <li>
-            <p>...</p>
+            <p>
+              Μητρώνυμο: {applicant.application.mName}
+              <Divider />
+            </p>
           </li>
           <li>
-            <p>Email: {applicant.application.email}</p>
+            <p>
+              Ημερομηνία Γέννησης: {applicant.application.birthday}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Υπηκοότητα: {applicant.application.citizenship}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Αριθμός Ταυτότητας/Διαβατηρίου: {applicant.application.idNumber}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Δήμος: {applicant.application.municipality}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Πόλη: {applicant.application.city}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Διεύθυνση κατοικίας: {applicant.application.address}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Τ.Κ.: {applicant.application.postalCode}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>Τηλέφωνο: {applicant.application.phoneNumber}</p>
+            <Divider />
+          </li>
+          <li>
+            <p>
+              Κινητό: {applicant.application.mobileNumber}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              E-mail: {applicant.application.email}
+              <Divider />
+            </p>
           </li>
         </ul>
       </div>
@@ -114,17 +166,17 @@ const SingleApplication = ({ applicant }) => {
         onClick={() => showSingleApplication(false)}
         variant="contained"
         color="primary"
-        style={{ float: "right", position: "relative", top: "30%" }}
+        style={{ top: "20%" }}
         component={Link}
         to={"/applications"}
         startIcon={<ArrowBackIcon />}
       >
         ΕΠΙΣΤΡΟΦΗ
       </Button>
-      <div style={{ float: "right", position: "relative", top: "35%" }}>
+      <div style={{ top: "30%" }}>
         {declineOrRejectSucess && (
           <>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h6">
               Επεξεργασία αίτησης επιτυχής!
               <Check
                 style={{

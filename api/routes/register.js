@@ -10,7 +10,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
-
 const User = require("../models/User");
 
 // POST
@@ -20,12 +19,12 @@ router.post(
     check("firstName", "firstName is required").not().isEmpty(),
     check("lastName", "lastName is required").not().isEmpty(),
     check("email", "include a valid email").isEmail(),
-    check("password", "please enter a pass with 6+ chars").isLength({ min: 1 }),
+    check("password", "please enter a pass with 6+ chars").isLength({ min: 6 }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ msg: errors.array() });
     }
 
     const { firstName, lastName, email, password, code } = req.body;

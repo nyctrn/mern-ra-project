@@ -14,6 +14,11 @@ const RegisteredUserHome = () => {
         {<FolderSharedIcon />} στα αριστερά
       </p>
       <h2>....</h2>
+
+      {/* WORK IN PROGRESS */}
+      <p style={{ fontSize: 40, textAlign: "center", color: "red" }}>
+        work in progress...
+      </p>
     </div>
   );
 };

@@ -249,6 +249,7 @@ const Register = (props) => {
                       onChange={onChange}
                       value={code}
                       name="code"
+                      type="password"
                       required
                     />
                   )}
@@ -286,6 +287,17 @@ const Register = (props) => {
               </div>
             )}
           </form>
+        )}
+        {error && error[0].msg && (
+          <div
+            style={{
+              float: "right",
+            }}
+          >
+            <span>{error[0].msg}</span>
+
+            <Close style={{ color: "red", verticalAlign: "bottom" }} />
+          </div>
         )}
       </div>
     </Container>

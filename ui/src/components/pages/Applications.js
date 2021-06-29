@@ -40,9 +40,6 @@ const Applications = (props) => {
     open: false,
   });
 
-  // console.log(props, "Applications");
-  // console.log(state, "Applicatitons");
-
   const {
     users,
     currentUser,
@@ -93,9 +90,6 @@ const Applications = (props) => {
       }, 3000);
       return () => clearInterval(interval);
     }
-    // console.log(currentUser, "in async before loaduser()");
-    // await loadUser();
-    // console.log(currentUser, "in async after loaduser()");
 
     // eslint-disable-next-line
   }, [state.users]);
@@ -104,10 +98,7 @@ const Applications = (props) => {
   const [applicant, setApplicant] = useState(null);
 
   const openApplication = (event, appl) => {
-    // console.log(event, appl, "event, application, Applications");
-
     setApplicant(appl);
-
     showSingleApplication(true);
   };
 

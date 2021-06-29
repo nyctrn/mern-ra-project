@@ -1,34 +1,40 @@
 import AuthContext from "../../context/authContext";
 import { useContext } from "react";
-import jsPDF from "jspdf";
+import { jsPDF } from "jspdf";
 import { Container } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import GetAppIcon from "@material-ui/icons/GetApp";
+import font from "../../fonts/LiberationSerif-Regular-normal";
+
+var callAddFont = function () {
+  this.addFileToVFS("LiberationSerif-Regular-normal.ttf", font);
+  this.addFont(
+    "LiberationSerif-Regular-normal.ttf",
+    "LiberationSerif-Regular",
+    "normal"
+  );
+};
+jsPDF.API.events.push(["addFonts", callAddFont]);
 
 const Folder = () => {
   const authContext = useContext(AuthContext);
-
+  const docs = new jsPDF();
+  console.log(docs.getFontList());
   const { currentUser } = authContext;
+
+  console.log(font);
 
   const generatePdf = () => {
     var doc = new jsPDF("p", "pt");
 
-    // doc.text(20, 20, "This is the first page title.");
-
-    doc.setFont("LiberationSerif-Regular", "normal");
-    doc.text(
-      20,
-      20,
-      `Αίτηση Συνταξιοδότησης (id:${currentUser.application.applicationId})`
-    );
+    doc.setFont("LiberationSerif-Regular");
+    doc.text(20, 20, `ασδφσδφ (id:${currentUser.application.applicationId})`);
 
     doc.text(20, 60, "......");
-
     doc.save("αίτηση_συνταξιοδότησης.pdf");
   };
 
-  // console.log(currentUser, "user Folder");
   return (
     <Container maxWidth="lg" style={{ minHeight: "250px" }}>
       <Paper>
@@ -56,6 +62,10 @@ const Folder = () => {
             >
               Λήψη αίτησης σε PDF
             </Button>
+            {/* WORK IN PROGRESS */}
+            <p style={{ fontSize: 40, textAlign: "center", color: "red" }}>
+              work in progress...
+            </p>
           </div>
         )}
       </Paper>

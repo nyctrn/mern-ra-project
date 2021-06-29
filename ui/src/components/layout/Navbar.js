@@ -113,19 +113,12 @@ const Navbar = ({ title, icon }) => {
 
   const authContext = useContext(AuthContext);
 
-  const {
-    isAuthenticated,
-    logout,
-    currentUser,
-    showSingleApplication,
-  } = authContext;
+  const { isAuthenticated, logout, currentUser, showSingleApplication } =
+    authContext;
 
   const onLogout = () => {
     logout();
   };
-
-  // console.log(currentUser, " currentUser Navbar");
-  // console.log(state, "state Navbar");
 
   const classes = useStyles();
   const theme = useTheme();

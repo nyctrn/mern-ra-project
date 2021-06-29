@@ -2,25 +2,39 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
-
 const User = require("../models/User");
+
+const formFields = [
+  { fieldName: "firstName", labelName: "Όνομα" },
+  { fieldName: "lastName", labelName: "Επώνυμο" },
+  { fieldName: "fName", labelName: "Πατρώνυμο" },
+  { fieldName: "mName", labelName: "Μητρώνυμο" },
+  { fieldName: "birthday", labelName: "Ημερομηνία Γέννησης" },
+  { fieldName: "citizenship", labelName: "Υπηκοότητα" },
+  { fieldName: "idNumber", labelName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
+  { fieldName: "municipality", labelName: "Δήμος" },
+  { fieldName: "city", labelName: "Πόλη" },
+  { fieldName: "address", labelName: "Διεύθυνση κατοικίας" },
+  { fieldName: "postalCode", labelName: "Τ.Κ." },
+  { fieldName: "phoneNumber", labelName: "Τηλέφωνο" },
+  { fieldName: "mobileNumber", labelName: "Κινητό" },
+  { fieldName: "email", labelName: "E-mail" },
+];
 
 // POST /register
 router.post(
   "/",
   auth,
-  [
-    check("firstName", "Το πεδίο 'Όνομα' είναι απαραίτητο").not().isEmpty(),
-    check("email", "Παρακαλώ εισάγεται ένα έγκυρο email").isEmail(),
-    // check("password", "please enter a pass with 6+ chars").isLength({ min: 6 }),
-  ],
+  formFields.map((fn) => {
+    return check(fn.fieldName, `Το πεδίο ${fn.labelName} είναι απαραίτητο`)
+      .not()
+      .isEmpty();
+  }),
+  check("email", "Παρακαλώ εισάγεται ένα έγκυρο email").isEmail(),
+
   async (req, res) => {
-    console.log(req.body, "req.body");
-    // console.log(req, res, "req,res");
     const errors = validationResult(req);
-    // console.log(errors);
     if (!errors.isEmpty()) {
-      console.log(errors);
       return res
         .status(400)
         .json({ errors: errors.array({ onlyFirstError: true }) });
@@ -44,12 +58,10 @@ router.post(
       applicationId,
     } = req.body;
 
-    // console.log(req.body);
+    console.log(req.body);
+    console.log(applicationId);
 
     try {
-      // console.log(req.body);
-      // console.log(user, "before");
-
       let user = await User.findByIdAndUpdate(
         req.user.id,
         {
@@ -74,8 +86,6 @@ router.post(
         },
         { new: true }
       ).select("-password");
-
-      console.log(user, "user");
 
       res.send(user);
     } catch (error) {

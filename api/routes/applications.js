@@ -7,11 +7,9 @@ const mailhogAddress =
 
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
 
 const User = require("../models/User");
-const { route } = require("./application");
 
 //////////// MailHog /////////////
 const nodemailer = require("nodemailer");
@@ -52,9 +50,7 @@ router.get("/", auth, async (req, res) => {
 router.post("/", auth, async (req, res) => {
   try {
     let user = await User.findById(req.user.id).select("-password");
-
     if (!user.title) res.send("access denied");
-
     user = await User.findByIdAndUpdate(req.body._id, {
       "application.status": req.body.status,
     });
@@ -63,7 +59,7 @@ router.post("/", auth, async (req, res) => {
       from: "syntaxiodotisi@mail.com",
       to: user.email,
       subject: "Σχετικά με την αίτηση συνταξιοδότησης που καταθέσατε",
-      text: `Αγαπητέ/ή πολίτη, η αίτηση συνταξιοδότησης που καταθέσατε με αριθμο; ${
+      text: `Αγαπητέ/ή πολίτη, η αίτηση συνταξιοδότησης που καταθέσατε με αριθμό; ${
         user.application.applicationId
       } ${
         user.application_status == "δεκτή"

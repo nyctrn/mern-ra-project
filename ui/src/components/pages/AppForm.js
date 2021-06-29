@@ -46,19 +46,14 @@ const AppForm = (props) => {
     currentUser,
     applicationSubmission,
   } = authContext;
-  // console.log(user);
-  // console.log(authContext);
 
   useEffect(() => {
     if (error) {
-      console.log("test in error");
       setTimeout(() => {
         clearErrors();
       }, 3000);
     }
-    console.log(error);
     if (error === "no errors" && !currentUser.application) {
-      console.log(error, "in useeffect");
       // setRegSuccess(true);
       setTimeout(() => {
         props.history.push("/");
@@ -70,9 +65,6 @@ const AppForm = (props) => {
 
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
-
-  // console.log(error, "error appform");
-  // console.log(currentUser, "curr user appform");
 
   const [regSuccess, setRegSuccess] = useState(false);
 
@@ -110,7 +102,6 @@ const AppForm = (props) => {
     mobileNumber,
   } = application;
 
-  // console.log(application);
   const onChange = (e) =>
     setApplication({ ...application, [e.target.name]: e.target.value });
 
@@ -149,20 +140,20 @@ const AppForm = (props) => {
   };
 
   const formFields = [
-    { fieldName: "firstName", labeName: "Όνομα" },
-    { fieldName: "lastName", labeName: "Επώνυμο" },
-    { fieldName: "fName", labeName: "Πατρώνυμο" },
-    { fieldName: "mName", labeName: "Μητρώνυμο" },
-    { fieldName: "birthday", labeName: "Ημερομηνία Γέννησης" },
-    { fieldName: "citizenship", labeName: "Υπηκοότητα" },
-    { fieldName: "idNumber", labeName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
-    { fieldName: "municipality", labeName: "Δήμος" },
-    { fieldName: "city", labeName: "Πόλη" },
-    { fieldName: "address", labeName: "Διεύθυνση κατοικίας" },
-    { fieldName: "postalCode", labeName: "Τ.Κ." },
-    { fieldName: "phoneNumber", labeName: "Τηλέφωνο" },
-    { fieldName: "mobileNumber", labeName: "Κινητό" },
-    { fieldName: "email", labeName: "E-mail" },
+    { fieldName: "firstName", labelName: "Όνομα" },
+    { fieldName: "lastName", labelName: "Επώνυμο" },
+    { fieldName: "fName", labelName: "Πατρώνυμο" },
+    { fieldName: "mName", labelName: "Μητρώνυμο" },
+    { fieldName: "birthday", labelName: "Ημερομηνία Γέννησης" },
+    { fieldName: "citizenship", labelName: "Υπηκοότητα" },
+    { fieldName: "idNumber", labelName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
+    { fieldName: "municipality", labelName: "Δήμος" },
+    { fieldName: "city", labelName: "Πόλη" },
+    { fieldName: "address", labelName: "Διεύθυνση κατοικίας" },
+    { fieldName: "postalCode", labelName: "Τ.Κ." },
+    { fieldName: "phoneNumber", labelName: "Τηλέφωνο" },
+    { fieldName: "mobileNumber", labelName: "Κινητό" },
+    { fieldName: "email", labelName: "E-mail" },
   ];
 
   const classes = useStyles();
@@ -212,9 +203,18 @@ const AppForm = (props) => {
                             // required
                             fullWidth
                             id={field.fieldName}
-                            label={field.labeName}
-                            autoFocus
+                            label={field.labelName}
                             size="small"
+                            InputLabelProps={
+                              field.fieldName === "birthday"
+                                ? {
+                                    shrink: true,
+                                  }
+                                : null
+                            }
+                            type={
+                              field.fieldName === "birthday" ? "date" : null
+                            }
                           />
                         </Grid>
                       );
@@ -232,30 +232,6 @@ const AppForm = (props) => {
                 </form>
               </>
             )}
-            {/* <>
-              <Typography component="h1" variant="h5">
-                Η αίτηση της συνταξιοδότησής σας στάλθηκε επιτυχώς!
-                <Check
-                  style={{
-                    color: "#4caf50",
-                    verticalAlign: "bottom",
-                    fontSize: "2rem",
-                  }}
-                />
-              </Typography>
-            </>
-            )
-            {error && error[0].msg && (
-              <div
-                style={{
-                  float: "right",
-                }}
-              >
-                <span>{error[0].msg}</span>
-
-                <Close style={{ color: "red", verticalAlign: "bottom" }} />
-              </div>
-            )} */}
             {applicationSubmission && (
               <>
                 <Typography component="h1" variant="h5">

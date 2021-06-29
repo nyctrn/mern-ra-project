@@ -6,31 +6,11 @@ import Slide from "@material-ui/core/Slide";
 import { Container } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 
-// import dotenv from "dotenv";
-// import dotenvExpand from "dotenv-expand";
-
-// const config = dotenv.config();
-
-// dotenvExpand(config);
-
-// console.log(config);
-
-// console.log(process.env.REACT_APP_API_URL, "REACT_APP_API_URL");
-
-// console.log(process.env, "process.env");
-
-// console.log(process.env.REACT_APP_TEST, "test ");
-
 const Home = () => {
   const authContext = useContext(AuthContext);
 
-  const {
-    isAuthenticated,
-    currentUser,
-    state,
-    loadUser,
-    fetchApplications,
-  } = authContext;
+  const { isAuthenticated, currentUser, state, loadUser, fetchApplications } =
+    authContext;
 
   useEffect(() => {
     loadUser();
@@ -40,13 +20,6 @@ const Home = () => {
         const filterApplications = (list) => {
           return list.filter((user) => user.application);
         };
-
-        // console.log(state, "state home");
-        // console.log(listLen, "list len Home");
-        // console.log(
-        //   filterApplications(state.users).length,
-        //   "new appl list len Home"
-        // );
 
         fetchApplications();
 
@@ -68,15 +41,9 @@ const Home = () => {
       }, 3000);
       return () => clearInterval(interval);
     }
-    // console.log(currentUser, "in async before loaduser()");
-    // await loadUser();
-    // console.log(currentUser, "in async after loaduser()");
 
     // eslint-disable-next-line
   }, [state.users]);
-
-  // console.log(currentUser, "currentUser Home");
-  // console.log(state, "state Home");
 
   const [muiState, setMuiState] = useState({
     open: false,
@@ -101,6 +68,10 @@ const Home = () => {
             {currentUser.title ? (
               <div>
                 <h2>Admin Control Panel</h2>
+                {/* WORK IN PROGRESS */}
+                <p style={{ fontSize: 40, textAlign: "center", color: "red" }}>
+                  work in progress...
+                </p>
                 <Snackbar
                   open={muiState.open}
                   onClose={handleClose}
@@ -119,6 +90,10 @@ const Home = () => {
       ) : (
         <div className="container">
           <h1 style={{ textAlign: "center" }}>Αρχική σελίδα (public)...</h1>
+          {/* WORK IN PROGRESS */}
+          <p style={{ fontSize: 40, textAlign: "center", color: "red" }}>
+            work in progress...
+          </p>
         </div>
       )}
     </Container>

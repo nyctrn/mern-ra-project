@@ -30,9 +30,6 @@ spec:
                 name: for-production
             - configMapRef:
                 name: production-port
-          # envFrom:
-          #   - configMapRef:
-          #       name: fastapi-config
           imagePullPolicy: Always
       imagePullSecrets:
         - name: dockerconfigjson-github-com

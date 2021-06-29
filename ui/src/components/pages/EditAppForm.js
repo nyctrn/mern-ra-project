@@ -52,7 +52,6 @@ const EditAppForm = () => {
 
   useEffect(() => {
     if (error) {
-      console.log("test in error");
       setTimeout(() => {
         clearErrors();
       }, 3000);
@@ -68,8 +67,6 @@ const EditAppForm = () => {
     // eslint-disable-next-line
   }, [error]);
 
-  // console.log(application, "EditAppForm");
-
   const onChange = (e) => {
     setApplication({ ...application, [e.target.name]: e.target.value });
   };
@@ -84,7 +81,6 @@ const EditAppForm = () => {
     //   setAlert("please enter all fields", "danger");
     // } else if () {
     //setAlert("password do not match", "danger");  --> !!!
-    console.log(error, "before");
 
     await formEdit({
       applicationId: currentUser.applicationId,
@@ -105,8 +101,6 @@ const EditAppForm = () => {
       email: application.email,
     });
 
-    console.log(error, "after");
-
     if (!error) {
     }
 
@@ -124,8 +118,6 @@ const EditAppForm = () => {
 
     // clearErrors();
   };
-  console.log(error, "error editappform");
-  // console.log(currentUser, "curr user editappform");
 
   const formFields = [
     { fieldName: "firstName", labeName: "Όνομα" },
@@ -176,87 +168,18 @@ const EditAppForm = () => {
                       autoFocus
                       size="small"
                       disabled={viewAppForm && true}
+                      InputLabelProps={
+                        field.fieldName === "birthday"
+                          ? {
+                              shrink: true,
+                            }
+                          : null
+                      }
+                      type={field.fieldName === "birthday" ? "date" : null}
                     />
                   </Grid>
                 );
               })}
-
-              {/* <Grid item xs={12}>
-                <TextField
-                  value={application.firstName}
-                  onChange={onChange}
-                  autoComplete="fname"
-                  name="firstName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="Όνομα"
-                  autoFocus
-                  size="small"
-                  disabled={viewAppForm && true}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={application.lastName}
-                  onChange={onChange}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Επώνυμο"
-                  name="lastName"
-                  autoComplete="lname"
-                  size="small"
-                  disabled={viewAppForm && true}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={application.email}
-                  onChange={onChange}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="E-mail"
-                  name="email"
-                  autoComplete="email"
-                  size="small"
-                  disabled={viewAppForm && true}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={application.email}
-                  onChange={onChange}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="E-mail"
-                  name="email"
-                  autoComplete="email"
-                  size="small"
-                  disabled={viewAppForm && true}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={application.email}
-                  onChange={onChange}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="E-mail"
-                  name="email"
-                  autoComplete="email"
-                  size="small"
-                  disabled={viewAppForm && true}
-                />
-              </Grid> */}
             </Grid>
             {edit && (
               <Button

@@ -9,8 +9,6 @@ RUN npm install react-scripts@3.0.1 -g --silent
 COPY . /app
 RUN npm run build
 
-
-
 # production environment
 FROM nginx:1.16.0-alpine
 
@@ -25,11 +23,12 @@ COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 # CMD ["nginx", "-g", "daemon off;"]
 
-
 # Copy .env file and shell script to container
 WORKDIR /usr/share/nginx/html
 COPY ./env.sh .
-COPY .env .
+RUN touch .env
+RUN echo "API_URL=localhost" > .env
+# COPY .env .
 
 # Add bash
 RUN apk add --no-cache bash
@@ -39,28 +38,3 @@ RUN chmod +x env.sh
 
 # Start Nginx server
 CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
-
-
-
-
-
-
-# # production environment
-# FROM nginx:1.16.0-alpine
-# COPY --from=build /app/build /usr/share/nginx/html
-# EXPOSE 80
-# CMD ["nginx", "-g", "daemon off;"]
-
-# FROM node:10
-# # Create app directory
-# WORKDIR /usr/src/app
-# # Install app dependencies
-# COPY package*.json ./
-
-# RUN npm install --silent
-# # Copy app source code
-# COPY . .
-
-# #Expose port and start application
-# EXPOSE 3000
-# CMD ["npm", "start"]
