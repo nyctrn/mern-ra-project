@@ -1,13 +1,11 @@
 api/node_modules/
 api/.gitignore
 api/.git/
-api/api-deployment.yml
 
 ui/node_modules/
 ui/client/build
 ui/.gitignore
 ui/.git/
-ui/ui-deployment.yml
 ui/.DS_Store
 ui/client/.env.local
 ui/client/.env.development.local
