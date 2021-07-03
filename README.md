@@ -12,8 +12,6 @@ kubectl apply -f k8s/db/mongodb-pvc.yml
 
 ## configmaps
 
-### create fastapi configmap
-
 ```bash
 kubectl create configmap for-production --from-literal=NODE_ENV=production
 kubectl create configmap production-port --from-literal=PORT=<*put port number here*>
