@@ -24,6 +24,14 @@ const ApplicationSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  afm: {
+    type: String,
+    required: true,
+  },
+  amka: {
+    type: String,
+    required: true,
+  },
   birthday: {
     type: String,
     required: true,

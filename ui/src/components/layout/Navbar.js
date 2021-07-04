@@ -183,7 +183,7 @@ const Navbar = ({ title, icon }) => {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          style={{ backgroundColor: "#429891" }}
+          style={{ backgroundColor: "#349aa0" }}
           position="static"
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open,
@@ -210,7 +210,7 @@ const Navbar = ({ title, icon }) => {
                 component={Link}
                 to={"/"}
               >
-                Syntaxiodotisi
+                Εφαρμογή Συνταξιοδότησης
               </Typography>
             </div>
 

@@ -40,7 +40,7 @@ const Login = (props) => {
   useEffect(() => {
     if (isAuthenticated && state.currentUser.title) {
       setTimeout(() => {
-        props.history.push("/applications");
+        props.history.push("/");
       }, 1400);
     } else if (isAuthenticated) {
       setTimeout(() => {
@@ -170,7 +170,7 @@ const Login = (props) => {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            style={{ backgroundColor: "#349aa0", color: "#ffffff" }}
             className={classes.submit}
           >
             ΣΥΝΔΕΣΗ

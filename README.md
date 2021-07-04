@@ -1,4 +1,32 @@
-# Work in progress...
+# Run application locally
+
+```bash
+cd api
+npm install
+```
+
+```bash
+cd ui
+npm install
+```
+
+- create .env file and add:
+
+for api:
+MONGODBUSER=<_put mongodb username here_>
+MONGODBPASSWORD=<_put mongodb password here_>
+JWTSECRET=<_put a jwt secret here_>
+REGISTRATIONCODE=<_put registration code here_>
+
+for ui:
+REACT_APP_API_URL=http://localhost:6050
+
+to run mailhog using docker:
+docker pull mailhog/mailhog
+docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+
+cd api:
+npm run dev
 
 # Deploy the project to a kubernetes cluster
 
@@ -15,7 +43,7 @@ kubectl apply -f k8s/db/mongodb-pvc.yml
 ```bash
 kubectl create configmap for-production --from-literal=NODE_ENV=production
 kubectl create configmap production-port --from-literal=PORT=<*put port number here*>
-kubectl create configmap react-app-api-url –from-file=REACT_APP_API_URL=API_URL.txt
+kubectl create configmap react-app-api-url --from-file=API_URL=API_URL.txt
 
 
 ```
@@ -36,7 +64,6 @@ kubectl apply -f k8s/db/mongodb-service.yml
 kubectl apply -f k8s/api/api-service.yml
 kubectl apply -f k8s/ui/ui-service.yml
 kubectl apply -f k8s/mailhog/mailhog-service.yml
-kubectl apply -f k8s/ingress/ingress-service-ssl.yml
 
 ```
 
@@ -45,7 +72,7 @@ kubectl apply -f k8s/ingress/ingress-service-ssl.yml
 - mongodb secret
 
 ```bash
-kubectl create secret generic mongodb-user --from-literal=MONGODBUSER=<*put user name here*> --from-literal=MONGODBPASSWORD=<*put password here*>
+kubectl create secret generic mongodb-user --from-literal=MONGODBUSER=<*put username here*> --from-literal=MONGODBPASSWORD=<*put password here*>
 ```
 
 - tls secret

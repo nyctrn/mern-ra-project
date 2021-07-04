@@ -19,7 +19,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const columns = [
   { id: "firstName", label: "Όνομα", minWidth: 170 },
   { id: "lastName", label: "Επώνυμο", minWidth: 170 },
-  { id: "email", label: "Email", minWidth: 100 },
+  { id: "afm", label: "ΑΦΜ", minWidth: 100 },
   { id: "amka", label: "AMKA", minWidth: 100 },
   { id: "status", label: "Κατάσταση αίτησης", minWidth: 100 },
 ];
@@ -48,6 +48,7 @@ const Applications = (props) => {
     showSingleApplication,
     state,
     loadUser,
+    justLogged,
   } = authContext;
 
   const [listLen, setListLen] = useState(
@@ -61,18 +62,29 @@ const Applications = (props) => {
     });
   };
 
-  useEffect(() => {
-    loadUser();
+  const filterApplications = (list) => {
+    return list.filter((user) => user.application);
+  };
 
+  useEffect(() => {
+    setListLen(filterApplications(state.users).length);
+
+    loadUser();
     if (currentUser && currentUser.title) {
       const interval = setInterval(() => {
-        const filterApplications = (list) => {
-          return list.filter((user) => user.application);
-        };
-
         fetchApplications(currentUser._id);
 
-        if (filterApplications(state.users).length > listLen) {
+        console.log(
+          filterApplications(state.users).length,
+          "filterapplications"
+        );
+        console.log(listLen, "listlen");
+        console.log(state.justLogged, "justlogged");
+
+        if (
+          filterApplications(state.users).length > listLen &&
+          state.justLogged === false
+        ) {
           setMuiState({
             open: true,
             SlideTransition,
@@ -87,6 +99,11 @@ const Applications = (props) => {
 
           setListLen(filterApplications(state.users).length);
         }
+        if (state.justLogged) {
+          setTimeout(() => justLogged(), 4000);
+        }
+        // setJustLogged(true);
+        // justLogged();
       }, 3000);
       return () => clearInterval(interval);
     }
@@ -94,8 +111,8 @@ const Applications = (props) => {
     // eslint-disable-next-line
   }, [state.users]);
 
-  // console.log(users);
   const [applicant, setApplicant] = useState(null);
+  // const [justLogged, setJustLogged] = useState(true);
 
   const openApplication = (event, appl) => {
     setApplicant(appl);

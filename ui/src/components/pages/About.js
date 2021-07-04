@@ -1,11 +1,55 @@
+import { Link } from "react-router-dom";
+import { Container, Paper } from "@material-ui/core";
+
 const About = () => {
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Πληροφορίες...</h1>
-      {/* WORK IN PROGRESS */}
-      <p style={{ fontSize: 40, textAlign: "center", color: "red" }}>
-        work in progress...
-      </p>
+      <Paper>
+        <Container maxWidth="lg">
+          <div>
+            <h1 style={{ textAlign: "center" }}>
+              Καλως ήλθατε στην Εφαρμογή Υποβολής Αιτήσεων Συνταξιοδότησης
+            </h1>
+            <br></br>
+            <br></br>
+            <ul>
+              <li>
+                <h2 style={{ textAlign: "left" }}>
+                  Για να κάνετε χρήση της εφαρμογής πρέπει να είστε
+                  εγγεγραμμένος χρήστης. <br></br>Για να εγγραφείτε πατήστε το
+                  κουμπί "Εγγραφή" ή κάντε κλίκ{" "}
+                  <Link to={"/register"}>εδώ</Link>.
+                </h2>
+              </li>
+              <li>
+                <h2 style={{ textAlign: "left" }}>
+                  Αν είστε εγγεγραμμένος χρήστης, για την χρήση της εφαρμογής
+                  πρέπει να συνδεθείτε (log in). <br></br>Για σύνδεση στην
+                  εφαρμογή πατήστε το κουμπί "Σύνδεση" ή κάντε κλίκ{" "}
+                  <Link to={"/login"}>εδώ</Link>.
+                </h2>
+              </li>
+              <li>
+                <h2 style={{ textAlign: "left" }}>
+                  Αν θέλετε να κάνετε εγγραφή ως υπάλληλος διαχείρησης θα
+                  χρειαστείτε τον κατάλληλο κωδικό αυθεντικοποίησης. <br></br>
+                  Κατά την εγγραφή σας επιλέξτε την επιλογή "Υπάλληλος" και
+                  πληκτρολογήστε τον κωδικό στο πεδίο που εμφανίζεται.
+                </h2>
+              </li>
+            </ul>
+          </div>
+
+          <div style={{ paddingBottom: "20px" }}>
+            <br></br>
+            <br></br>
+            <h1>Επικοινωνία:</h1>
+            <h3>Τηλέφωνα εξυπηρέτησης πολιτών: 209 987546213, 208 987546248</h3>
+            <h3>Ηλεκτρονικό ταχυδρομείο: aitisi@syntaxiouxosthagino.gr</h3>
+            <h3>Διεύθυνση: Λφ. Δρόμου 675, Περιοχή, Πόλη, ΤΚ 0000</h3>
+          </div>
+        </Container>
+      </Paper>
     </>
   );
 };

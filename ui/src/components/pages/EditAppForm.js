@@ -17,6 +17,8 @@ const EditAppForm = () => {
     lastName,
     fName,
     mName,
+    afm,
+    amka,
     birthday,
     citizenship,
     idNumber,
@@ -38,6 +40,8 @@ const EditAppForm = () => {
     lastName,
     fName,
     mName,
+    afm,
+    amka,
     birthday,
     citizenship,
     idNumber,
@@ -89,6 +93,8 @@ const EditAppForm = () => {
       lastName: application.lastName,
       fName: application.fName,
       mName: application.mName,
+      afm: application.afm,
+      amka: application.amka,
       birthday: application.birthday,
       citizenship: application.citizenship,
       idNumber: application.idNumber,
@@ -120,20 +126,22 @@ const EditAppForm = () => {
   };
 
   const formFields = [
-    { fieldName: "firstName", labeName: "Όνομα" },
-    { fieldName: "lastName", labeName: "Επώνυμο" },
-    { fieldName: "fName", labeName: "Πατρώνυμο" },
-    { fieldName: "mName", labeName: "Μητρώνυμο" },
-    { fieldName: "birthday", labeName: "Ημερομηνία Γέννησης" },
-    { fieldName: "citizenship", labeName: "Υπηκοότητα" },
-    { fieldName: "idNumber", labeName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
-    { fieldName: "municipality", labeName: "Δήμος" },
-    { fieldName: "city", labeName: "Πόλη" },
-    { fieldName: "address", labeName: "Διεύθυνση κατοικίας" },
-    { fieldName: "postalCode", labeName: "Τ.Κ." },
-    { fieldName: "phoneNumber", labeName: "Τηλέφωνο" },
-    { fieldName: "mobileNumber", labeName: "Κινητό" },
-    { fieldName: "email", labeName: "E-mail" },
+    { fieldName: "firstName", labelName: "Όνομα" },
+    { fieldName: "lastName", labelName: "Επώνυμο" },
+    { fieldName: "fName", labelName: "Πατρώνυμο" },
+    { fieldName: "mName", labelName: "Μητρώνυμο" },
+    { fieldName: "afm", labelName: "ΑΦΜ" },
+    { fieldName: "amka", labelName: "ΑΜΚΑ" },
+    { fieldName: "birthday", labelName: "Ημερομηνία Γέννησης" },
+    { fieldName: "citizenship", labelName: "Υπηκοότητα" },
+    { fieldName: "idNumber", labelName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
+    { fieldName: "municipality", labelName: "Δήμος" },
+    { fieldName: "city", labelName: "Πόλη" },
+    { fieldName: "address", labelName: "Διεύθυνση κατοικίας" },
+    { fieldName: "postalCode", labelName: "Τ.Κ." },
+    { fieldName: "phoneNumber", labelName: "Τηλέφωνο" },
+    { fieldName: "mobileNumber", labelName: "Κινητό" },
+    { fieldName: "email", labelName: "E-mail" },
   ];
 
   return (
@@ -164,7 +172,7 @@ const EditAppForm = () => {
                       // required
                       fullWidth
                       id={field.fieldName}
-                      label={field.labeName}
+                      label={field.labelName}
                       autoFocus
                       size="small"
                       disabled={viewAppForm && true}
@@ -183,11 +191,14 @@ const EditAppForm = () => {
             </Grid>
             {edit && (
               <Button
-                style={{ marginTop: "20px" }}
+                style={{
+                  marginTop: "20px",
+                  background: "#349aa0",
+                  color: "#ffffff",
+                }}
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
               >
                 ΥΠΟΒΟΛΗ
               </Button>

@@ -19,6 +19,7 @@ const AuthState = (props) => {
     users: [],
     applicationSubmission: false,
     single_application: false,
+    justLogged: true,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -90,9 +91,6 @@ const AuthState = (props) => {
   // clear errors
   const clearErrors = () => dispatch({ type: "CLEAR_ERRORS" });
 
-  ///////////////////////////////////
-  // application test
-  //////////////////////////////////
   const formApplication = async (formData) => {
     const config = {
       headers: {
@@ -100,9 +98,11 @@ const AuthState = (props) => {
       },
     };
 
+    console.log(formData);
     try {
       const res = await axios.post(apiUrl + "/application", formData, config);
 
+      console.log(res);
       dispatch({
         type: "FORM_APPLICATION",
         payload: res.data,
@@ -221,6 +221,12 @@ const AuthState = (props) => {
     });
   };
 
+  const justLogged = () => {
+    dispatch({
+      type: "JUST_LOGGED",
+    });
+  };
+
   ///////////////////////////////////
 
   return (
@@ -245,6 +251,7 @@ const AuthState = (props) => {
         acceptApplications,
         formEdit,
         showSingleApplication,
+        justLogged,
       }}
     >
       {props.children}

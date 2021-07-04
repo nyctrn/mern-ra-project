@@ -74,6 +74,8 @@ const AppForm = (props) => {
     email: "",
     fName: "",
     mName: "",
+    afm: "",
+    amka: "",
     birthday: "",
     citizenship: "",
     idNumber: "",
@@ -91,6 +93,8 @@ const AppForm = (props) => {
     email,
     fName,
     mName,
+    afm,
+    amka,
     birthday,
     citizenship,
     idNumber,
@@ -113,11 +117,14 @@ const AppForm = (props) => {
     //   //   setAlert("password do not match", "danger"); --> fix alerts
     // } else {
     formApplication({
-      applicationId: uuid().slice(0, 13),
+      // applicationId: uuid().slice(0, 13),
+      applicationId: uuid(),
       firstName,
       lastName,
       fName,
       mName,
+      afm,
+      amka,
       birthday,
       citizenship,
       idNumber,
@@ -144,6 +151,8 @@ const AppForm = (props) => {
     { fieldName: "lastName", labelName: "Επώνυμο" },
     { fieldName: "fName", labelName: "Πατρώνυμο" },
     { fieldName: "mName", labelName: "Μητρώνυμο" },
+    { fieldName: "afm", labelName: "ΑΦΜ" },
+    { fieldName: "amka", labelName: "ΑΜΚΑ" },
     { fieldName: "birthday", labelName: "Ημερομηνία Γέννησης" },
     { fieldName: "citizenship", labelName: "Υπηκοότητα" },
     { fieldName: "idNumber", labelName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
@@ -185,7 +194,11 @@ const AppForm = (props) => {
             </Avatar>
             {!applicationSubmission && (
               <>
-                <Typography component="h1" variant="h5">
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  style={{ color: "black" }}
+                >
                   Αίτηση Συνταξιοδότησης
                 </Typography>
 
@@ -224,10 +237,10 @@ const AppForm = (props) => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    style={{ background: "#349aa0", color: "#ffffff" }}
                     className={classes.submit}
                   >
-                    ΑΠΟΣΤΟΛΗ ΑΙΤΗΣΗΣ
+                    ΥΠΟΒΟΛΗ ΑΙΤΗΣΗΣ
                   </Button>{" "}
                 </form>
               </>

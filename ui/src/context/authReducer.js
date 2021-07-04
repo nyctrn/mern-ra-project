@@ -55,10 +55,24 @@ const authReducer = (state, action) => {
         error: null,
       };
     case "FETCH_APPLICATIONS":
+      if (state.justLogged) {
+        return {
+          ...state,
+          users: action.payload,
+          loading: false,
+          justLogged: true,
+        };
+      }
       return {
         ...state,
         users: action.payload,
         loading: false,
+        justLogged: false,
+      };
+    case "JUST_LOGGED":
+      return {
+        ...state,
+        justLogged: false,
       };
     case "APPLICATIONS_FETCH_FAIL":
       return {

@@ -260,7 +260,7 @@ const Register = (props) => {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              style={{ backgroundColor: "#349aa0", color: "#ffffff" }}
               className={classes.submit}
             >
               Εγγραφη

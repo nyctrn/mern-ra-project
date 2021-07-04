@@ -9,6 +9,8 @@ const formFields = [
   { fieldName: "lastName", labelName: "Επώνυμο" },
   { fieldName: "fName", labelName: "Πατρώνυμο" },
   { fieldName: "mName", labelName: "Μητρώνυμο" },
+  { fieldName: "afm", labelName: "ΑΦΜ" },
+  { fieldName: "amka", labelName: "ΑΜΚΑ" },
   { fieldName: "birthday", labelName: "Ημερομηνία Γέννησης" },
   { fieldName: "citizenship", labelName: "Υπηκοότητα" },
   { fieldName: "idNumber", labelName: "Αριθμός Ταυτότητας/Διαβατηρίου" },
@@ -45,6 +47,8 @@ router.post(
       lastName,
       fName,
       mName,
+      afm,
+      amka,
       birthday,
       citizenship,
       idNumber,
@@ -58,9 +62,6 @@ router.post(
       applicationId,
     } = req.body;
 
-    console.log(req.body);
-    console.log(applicationId);
-
     try {
       let user = await User.findByIdAndUpdate(
         req.user.id,
@@ -70,6 +71,8 @@ router.post(
             lastName,
             fName,
             mName,
+            afm,
+            amka,
             birthday,
             citizenship,
             idNumber,

@@ -23,7 +23,7 @@ const SingleApplication = ({ applicant }) => {
   const [declineOrRejectSucess, setDeclineOrRejectSucess] = useState(null);
 
   const handleApplications = async (event) => {
-    if (event.target.innerText === "ΑΠΟΔΟΧΗ") {
+    if (event.target.innerText === "ΕΓΚΡΙΣΗ") {
       acceptApplications({
         // _id: applicant._id, (test for error handling)
         _id: applicant._id,
@@ -52,10 +52,17 @@ const SingleApplication = ({ applicant }) => {
     }
   };
 
-  console.log(applicant);
+  const formatDate = (date) => {
+    let datePart = date.match(/\d+/g),
+      year = datePart[0].substring(2),
+      month = datePart[1],
+      day = datePart[2];
+
+    return day + "/" + month + "/" + year;
+  };
 
   return (
-    <Container maxWidth="xl" style={{ height: "70vh" }}>
+    <Container maxWidth="xl" style={{ height: "80vh" }}>
       <h3 style={{}}>ID αίτησης: {applicant.application.applicationId}</h3>
       <h2>Στοιχεία αιτούντα:</h2>
       {/* <hr /> */}
@@ -82,7 +89,19 @@ const SingleApplication = ({ applicant }) => {
           </li>
           <li>
             <p>
-              Ημερομηνία Γέννησης: {applicant.application.birthday}
+              ΑΦΜ {applicant.application.afm}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              ΑΜΚΑ: {applicant.application.amka}
+              <Divider />
+            </p>
+          </li>
+          <li>
+            <p>
+              Ημερομηνία Γέννησης: {formatDate(applicant.application.birthday)}
               <Divider />
             </p>
           </li>
@@ -149,7 +168,7 @@ const SingleApplication = ({ applicant }) => {
         style={{ backgroundColor: "#4caf50", float: "left" }}
         startIcon={<ThumbUpIcon />}
       >
-        ΑΠΟΔΟΧΗ
+        ΕΓΚΡΙΣΗ
       </Button>
 
       <Button

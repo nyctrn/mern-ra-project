@@ -1,11 +1,12 @@
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
-}
-const envUser = process.env.MONGODBUSER;
-const envPass = process.env.MONGODBPASSWORD;
 
-const devDb = `mongodb+srv://${envUser}:${envPass}@cluster0.izx90.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const prodDb = `mongodb://${envUser}:${envPass}@mongodb-service:27017`;
+  var devDb = process.env.CONNECTION_STRING;
+} else {
+  var envUser = process.env.MONGODBUSER;
+  var envPass = process.env.MONGODBPASSWORD;
+  var prodDb = `mongodb://${envUser}:${envPass}@mongodb-service:27017`;
+}
 
 const db = process.env.NODE_ENV === "development" ? devDb : prodDb;
 
