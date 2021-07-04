@@ -1,5 +1,11 @@
 # Run application locally
 
+In order to run the application locally, you will need:
+
+NodeJs
+npm
+Mongodb connection string (either from MongoDB Atlas or from local deployment)
+
 ```bash
 cd api
 npm install
@@ -10,24 +16,29 @@ cd ui
 npm install
 ```
 
-- create .env file and add:
+- create .env file in api and ui folders and add:
 
 for api:
 
-- MONGODBUSER=<_put mongodb username here_>
-- MONGODBPASSWORD=<_put mongodb password here_>
+- CONNECTION*STRING=<\_put mongodb connection string here*>
 - JWTSECRET=<_put a jwt secret here_>
 - REGISTRATIONCODE=<_put registration code here_>
 
 for ui:
-REACT_APP_API_URL=http://localhost:6050
+
+- REACT_APP_API_URL=http://localhost:6050
 
 to run mailhog using docker:
+
+```bash
 docker pull mailhog/mailhog
 docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+```
 
+```bash
 cd api:
 npm run dev
+```
 
 # Deploy the project to a kubernetes cluster
 
