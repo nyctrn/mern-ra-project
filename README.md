@@ -13,10 +13,10 @@ npm install
 - create .env file and add:
 
 for api:
-MONGODBUSER=<_put mongodb username here_>
-MONGODBPASSWORD=<_put mongodb password here_>
-JWTSECRET=<_put a jwt secret here_>
-REGISTRATIONCODE=<_put registration code here_>
+-MONGODBUSER=<_put mongodb username here_>
+-MONGODBPASSWORD=<_put mongodb password here_>
+-JWTSECRET=<_put a jwt secret here_>
+-REGISTRATIONCODE=<_put registration code here_>
 
 for ui:
 REACT_APP_API_URL=http://localhost:6050
@@ -131,3 +131,5 @@ echo <USER>:<TOKEN> | base64
 ```bash
 echo '{"auths":{"ghcr.io":{"auth":"<AUTH>"}}}' | kubectl create secret generic dockerconfigjson-github-com --type=kubernetes.io/dockerconfigjson --from-file=.dockerconfigjson=/dev/stdin
 ```
+
+![Alt text](img/app_overview.jpg?raw=true "Application overview")
