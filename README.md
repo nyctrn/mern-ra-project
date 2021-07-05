@@ -2,9 +2,9 @@
 
 In order to run the application locally, you will need:
 
-NodeJs
-npm
-Mongodb connection string (either from MongoDB Atlas or from local deployment)
+- NodeJs
+- npm
+- Mongodb connection string (either from MongoDB Atlas or from local deployment)
 
 ```bash
 cd api
