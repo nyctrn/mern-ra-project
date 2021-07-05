@@ -20,7 +20,7 @@ npm install
 
 for api:
 
-- CONNECTION*STRING=<\_put mongodb connection string here*>
+- CONNECTION_STRING=<_put mongodb connection string here_>
 - JWTSECRET=<_put a jwt secret here_>
 - REGISTRATIONCODE=<_put registration code here_>
 
