@@ -144,6 +144,24 @@ echo <USER>:<TOKEN> | base64
 echo '{"auths":{"ghcr.io":{"auth":"<AUTH>"}}}' | kubectl create secret generic dockerconfigjson-github-com --type=kubernetes.io/dockerconfigjson --from-file=.dockerconfigjson=/dev/stdin
 ```
 
+# Application URL & Test accounts
+
+## URL: https://marioskour.cloudns.cl/
+
+## Employee test account:
+
+	- email: gspan@gmail.com
+	- password: g123456
+
+## Citizen test accounts:
+
+	- email: gereustath@otenet.gr
+	- password: gerarimos1
+
+	- email2: itp20158@hua.gr
+	- password2: itp20158
+
+
 # Application overview
 
 ![Alt text](img/app_overview.jpg?raw=true "Application overview")
