@@ -94,8 +94,6 @@ const Applications = (props) => {
         if (state.justLogged) {
           setTimeout(() => justLogged(), 4000);
         }
-        // setJustLogged(true);
-        // justLogged();
       }, 3000);
       return () => clearInterval(interval);
     }
@@ -104,7 +102,6 @@ const Applications = (props) => {
   }, [state.users]);
 
   const [applicant, setApplicant] = useState(null);
-  // const [justLogged, setJustLogged] = useState(true);
 
   const openApplication = (event, appl) => {
     setApplicant(appl);
