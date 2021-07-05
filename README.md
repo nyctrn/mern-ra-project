@@ -158,8 +158,8 @@ URL: https://marioskour.cloudns.cl/
 	- email: gereustath@otenet.gr
 	- password: gerarimos1
 
-	- email2: itp20158@hua.gr
-	- password2: itp20158
+	- email: itp20158@hua.gr
+	- password: itp20158
 
 
 # Application overview
