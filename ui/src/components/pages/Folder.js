@@ -31,8 +31,6 @@ const Folder = () => {
     return day + "/" + month + "/" + year;
   };
 
-  console.log(currentUser);
-
   const generatePdf = () => {
     var doc = new jsPDF("p", "pt");
 

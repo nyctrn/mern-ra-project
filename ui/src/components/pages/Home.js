@@ -23,7 +23,6 @@ const Home = () => {
         };
 
         fetchApplications();
-        console.log(state.justLogged);
 
         if (
           filterApplications(state.users).length > listLen &&

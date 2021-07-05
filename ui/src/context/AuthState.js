@@ -98,11 +98,9 @@ const AuthState = (props) => {
       },
     };
 
-    console.log(formData);
     try {
       const res = await axios.post(apiUrl + "/application", formData, config);
 
-      console.log(res);
       dispatch({
         type: "FORM_APPLICATION",
         payload: res.data,
@@ -188,7 +186,6 @@ const AuthState = (props) => {
   };
 
   const acceptApplications = async (formData) => {
-    // console.log("test", formData);
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -198,7 +195,6 @@ const AuthState = (props) => {
     try {
       const res = await axios.post(apiUrl + "/applications", formData, config);
 
-      // console.log(res, "acceptapplications authstate success");
       dispatch({
         type: "ACCEPT_APPLICATION",
         payload: res.data,
@@ -206,7 +202,6 @@ const AuthState = (props) => {
 
       // loadUser();
     } catch (error) {
-      // console.log(error, "acceptapplications authstate fail");
       dispatch({
         type: "APPLICATION_HANDLE_FAIL",
         payload: error.response.data.msg,

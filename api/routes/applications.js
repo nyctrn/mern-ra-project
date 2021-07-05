@@ -49,24 +49,33 @@ router.get("/", auth, async (req, res) => {
 // POST
 router.post("/", auth, async (req, res) => {
   try {
-    let user = await User.findById(req.user.id).select("-password");
-    if (!user.title) res.send("access denied");
-    user = await User.findByIdAndUpdate(req.body._id, {
-      "application.status": req.body.status,
-    });
+    let checkUser = await User.findById(req.user.id).select("-password");
+    if (!checkUser.title) res.send("access denied");
+    let user = await User.findByIdAndUpdate(
+      req.body._id,
+      {
+        "application.status": req.body.status,
+      },
+      { new: true }
+    );
 
     const emailMsg = {
       from: "syntaxiodotisi@mail.com",
       to: user.email,
       subject: "Σχετικά με την αίτηση συνταξιοδότησης που καταθέσατε",
-      text: `Αγαπητέ/ή πολίτη, η αίτηση συνταξιοδότησης που καταθέσατε με αριθμό; ${
+      text: `Αγαπητέ/ή πολίτη, η αίτηση συνταξιοδότησης που καταθέσατε με κωδικό ${
         user.application.applicationId
       } ${
-        user.application_status == "δεκτή"
-          ? "έγινε δεκτή. Μπορείτε να την βρείτε στον 'φάκελο χρήστη' και να την κατεβάσετε σε μορφή pdf."
-          : "δεν έγινε δεκτή. ...."
+        user.application.status == "δεκτή"
+          ? `έγινε δεκτή. 
+          Μπορείτε να την βρείτε στον 'φάκελο χρήστη' και να την κατεβάσετε σε μορφή pdf.`
+          : "δεν έγινε δεκτή."
       } 
-      Για περισσότερες πληροφορίες ...`,
+
+      Για περισσότερες πληροφορίες μπορείτε να επικοινωνήσετε μαζί μας μέσω τηλεφώνου ή μέσω email
+
+                          Τηλέφωνα εξυπηρέτησης πολιτών: 209 987546213, 208 987546248
+                            Ηλεκτρονικό ταχυδρομείο: aitisi@syntaxiouxosthagino.gr`,
     };
 
     await transporter.sendMail(emailMsg);

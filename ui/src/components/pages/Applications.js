@@ -73,14 +73,6 @@ const Applications = (props) => {
     if (currentUser && currentUser.title) {
       const interval = setInterval(() => {
         fetchApplications(currentUser._id);
-
-        console.log(
-          filterApplications(state.users).length,
-          "filterapplications"
-        );
-        console.log(listLen, "listlen");
-        console.log(state.justLogged, "justlogged");
-
         if (
           filterApplications(state.users).length > listLen &&
           state.justLogged === false
