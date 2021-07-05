@@ -146,7 +146,7 @@ echo '{"auths":{"ghcr.io":{"auth":"<AUTH>"}}}' | kubectl create secret generic d
 
 # Application URL & Test accounts
 
-## URL: https://marioskour.cloudns.cl/
+URL: https://marioskour.cloudns.cl/
 
 ## Employee test account:
 
