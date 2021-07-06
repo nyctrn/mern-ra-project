@@ -44,15 +44,16 @@ for ui:
 
 - REACT_APP_API_URL=http://localhost:6050
 
-- If you want the mailing system to work you will need mailhog service. A fast and easy way to run it locally is using docker like this:
+- If you want the mailing system to work you will need mailhog service.
+	- 1025 port is the default for the SMTP server, and 8025 for the HTTP server
+	- To connect to the WebUI go to http://localhost:8025/
+- A fast and easy way to run it locally is using docker like this:
 
 ```bash
 docker pull mailhog/mailhog
 docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
 ```
 
-- 1025 port is the default for the SMTP server, and 8025 for the HTTP server
-- To connect to the WebUI go to http://localhost:8025/
 
 
 - Finally, to start the application:
