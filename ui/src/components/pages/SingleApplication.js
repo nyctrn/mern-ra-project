@@ -73,8 +73,8 @@ const SingleApplication = ({ applicant }) => {
   };
 
   return (
-    <Container style={{ height: "100vh" }} maxWidth="lg">
-      <Paper style={{ marginTop: "1rem", height: "85%" }}>
+    <Container style={{ height: "100%" }} maxWidth="lg">
+      <Paper style={{ marginTop: "1rem", height: "1080px" }}>
         <div style={{ padding: "1rem" }}>
           <h2>
             Κατάσταση αίτησης με κωδικό: {applicant.application.applicationId} -{" "}
@@ -105,7 +105,7 @@ const SingleApplication = ({ applicant }) => {
               </li>
               <li>
                 <p>
-                  ΑΦΜ {applicant.application.afm}
+                  ΑΦΜ: {applicant.application.afm}
                   <Divider />
                 </p>
               </li>

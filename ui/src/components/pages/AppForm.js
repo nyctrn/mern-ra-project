@@ -165,8 +165,12 @@ const AppForm = (props) => {
   const classes = useStyles();
 
   return (
-    <Container style={{ height: "100vh" }} maxWidth="lg">
-      <Paper>
+    <Container style={{ height: "100%", marginBottom: "8rem" }} maxWidth="lg">
+      <Paper
+        style={
+          applicationSubmission ? { height: "1150px" } : { height: "10rem" }
+        }
+      >
         {!currentUser.application ? (
           <>
             <CssBaseline />

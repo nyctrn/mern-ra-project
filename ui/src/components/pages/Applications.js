@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     width: "100%",
   },
   container: {
-    maxHeight: 640,
+    maxHeight: 700,
   },
 });
 
@@ -124,7 +124,7 @@ const Applications = (props) => {
   };
 
   return (
-    <Container style={{ height: "100vh" }} maxWidth="lg">
+    <Container style={{ height: "100%", marginBottom: "3px" }} maxWidth="lg">
       <Snackbar
         open={muiState.open}
         onClose={handleClose}

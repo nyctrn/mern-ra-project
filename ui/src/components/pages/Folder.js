@@ -63,7 +63,7 @@ const Folder = () => {
   };
 
   return (
-    <Container style={{ height: "100vh", minWidth: "20vw" }} maxWidth="lg">
+    <Container style={{ height: "80vh", minWidth: "20vw" }} maxWidth="lg">
       <Paper>
         <h1 style={{ textAlign: "center", backgroundColor: "#b1bac163" }}>
           Φάκελος χρήστη

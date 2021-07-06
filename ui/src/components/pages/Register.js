@@ -128,7 +128,7 @@ const Register = (props) => {
     <Container
       component="main"
       maxWidth="xs"
-      style={{ height: "100vh", minWidth: "30vw" }}
+      style={{ height: "80vh", minWidth: "31rem" }}
     >
       <Paper elevation={3}>
         <CssBaseline />
@@ -163,7 +163,7 @@ const Register = (props) => {
           <Typography
             component="h1"
             variant="h6"
-            style={{ fontSize: "1.5rem", width: "31vw", textAlign: "center" }}
+            style={{ fontSize: "1.5rem", width: "29rem", textAlign: "center" }}
           >
             Δημιουργία λογαριασμού{" "}
             {isAuthenticated && (

@@ -62,7 +62,7 @@ const Home = () => {
   };
 
   return (
-    <Container maxWidth="lg" style={{ height: "100vh" }}>
+    <Container maxWidth="lg" style={{ height: "80vh" }}>
       {isAuthenticated ? (
         <Paper elevation={2}>
           <>

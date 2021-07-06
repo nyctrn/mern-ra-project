@@ -89,7 +89,7 @@ const Login = (props) => {
   const classes = useStyles();
 
   return (
-    <Container style={{ height: "100vh", minWidth: "30vw" }} maxWidth="xs">
+    <Container style={{ height: "80vh", minWidth: "31rem" }} maxWidth="xs">
       <CssBaseline />
       <Paper elevation={3}>
         <div className={classes.paper} style={{ padding: "1rem" }}>

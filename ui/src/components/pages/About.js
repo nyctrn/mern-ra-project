@@ -3,7 +3,7 @@ import { Container, Paper } from "@material-ui/core";
 
 const About = () => {
   return (
-    <Container maxWidth="lg" style={{ height: "100vh" }}>
+    <Container maxWidth="lg" style={{ height: "80vh" }}>
       <Paper elevation={2}>
         <div>
           <h1 style={{ textAlign: "center" }}>
