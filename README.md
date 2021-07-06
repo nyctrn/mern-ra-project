@@ -176,7 +176,7 @@ URL: https://marioskour.cloudns.cl/
 	- email: gspan@gmail.com
 	- password: g123456
 
-### Registration code for employees: "jg9j#4*81n"
+Registration code for employees: "jg9j#4*81n"
 
 ## Citizen test accounts:
 
