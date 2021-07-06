@@ -12,13 +12,13 @@ In order to run the application locally, you will need:
 	```bash
 	docker pull mongo
 
-	docker run -d  --name mongo-docker  -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=<*put a username here*> -e MONGO_INITDB_ROOT_PASSWORD=<*put a passowrd here*>
+	docker run -d  --name mongo-docker  -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=<*put a username here*> -e MONGO_INITDB_ROOT_PASSWORD=<*put a passowrd here*> mongo
 
 	```
 
 	- Then create the connection string likes this: 
 	```	
-	mongodb://<_username_>:<_password_>@localhost:27017/?authSource=admin
+	mongodb://<*username*>:<*password*>@localhost:27017/?authSource=admin
 	```
 	- Add this connection string into the api .env file
 
