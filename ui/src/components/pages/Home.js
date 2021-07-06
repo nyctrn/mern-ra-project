@@ -1,10 +1,7 @@
 import AuthContext from "../../context/authContext";
 import { useContext, useEffect, useState } from "react";
 import RegisteredUserHome from "./RegisteredUserHome";
-import Snackbar from "@material-ui/core/Snackbar";
-import Slide from "@material-ui/core/Slide";
-import { Container } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
+import { Snackbar, Slide, Container, Paper } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ListAlt from "@material-ui/icons/ListAlt";
 

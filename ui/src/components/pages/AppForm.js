@@ -10,6 +10,7 @@ import {
   Typography,
   Container,
   Paper,
+  CssBaseline,
 } from "@material-ui/core";
 import { ListAlt, Close, Check } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
@@ -168,7 +169,7 @@ const AppForm = (props) => {
       <Paper>
         {!currentUser.application ? (
           <>
-            {/* <CssBaseline /> */}
+            <CssBaseline />
             <div className={classes.paper} style={{ padding: "1rem" }}>
               <Avatar
                 className={classes.avatar}

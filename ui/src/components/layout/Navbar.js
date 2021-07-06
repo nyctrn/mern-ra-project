@@ -2,31 +2,39 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
+import {
+  AppBar,
+  Drawer,
+  CssBaseline,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  ClickAwayListener,
+} from "@material-ui/core";
+
+import {
+  ExitToApp,
+  ChevronLeft,
+  ChevronRight,
+  ListAlt,
+  FolderShared,
+  Menu,
+} from "@material-ui/icons";
 import clsx from "clsx";
-import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Divider from "@material-ui/core/Divider";
-import MenuIcon from "@material-ui/icons/Menu";
-import List from "@material-ui/core/List";
-import ExitToApp from "@material-ui/icons/ExitToApp";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListAlt from "@material-ui/icons/ListAlt";
-import FolderSharedIcon from "@material-ui/icons/FolderShared";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import VersionNumber from "../VersionNumber";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  listItemText: {
+    fontSize: "1.3rem",
+  },
   root: {
     flexGrow: 1,
     display: "flex",
@@ -212,7 +220,7 @@ const Navbar = ({ title, icon }) => {
                   [classes.hide]: open,
                 })}
               >
-                <MenuIcon />
+                <Menu style={{ fontSize: "2.1rem" }} />
               </IconButton>
             )}
             <div className={classes.title}>
@@ -282,11 +290,7 @@ const Navbar = ({ title, icon }) => {
           >
             <div className={classes.toolbar}>
               <IconButton onClick={handleDrawerClose}>
-                {theme.direction === "rtl" ? (
-                  <ChevronRightIcon />
-                ) : (
-                  <ChevronLeftIcon />
-                )}
+                {theme.direction === "rtl" ? <ChevronRight /> : <ChevronLeft />}
               </IconButton>
             </div>
             <Divider />
@@ -300,9 +304,12 @@ const Navbar = ({ title, icon }) => {
                   to={"/applications"}
                 >
                   <ListItemIcon>
-                    <ListAlt />
+                    <ListAlt style={{ fontSize: "2.1rem" }} />
                   </ListItemIcon>
-                  <ListItemText primary={"Αιτήσεις"} />
+                  <ListItemText
+                    classes={{ primary: classes.listItemText }}
+                    primary={"Αιτήσεις"}
+                  />
                 </ListItem>
               ) : (
                 <>
@@ -313,9 +320,12 @@ const Navbar = ({ title, icon }) => {
                     to={"/folder"}
                   >
                     <ListItemIcon>
-                      <FolderSharedIcon />
+                      <FolderShared style={{ fontSize: "2.1rem" }} />
                     </ListItemIcon>
-                    <ListItemText primary={"Ο φάκελός μου"} />
+                    <ListItemText
+                      primary={"Ο φάκελός μου"}
+                      classes={{ primary: classes.listItemText }}
+                    />
                   </ListItem>
                   <ListItem
                     button
@@ -324,9 +334,12 @@ const Navbar = ({ title, icon }) => {
                     to={"/application"}
                   >
                     <ListItemIcon>
-                      <ListAlt />
+                      <ListAlt style={{ fontSize: "2.1rem" }} />
                     </ListItemIcon>
-                    <ListItemText primary={"Αίτηση"} />
+                    <ListItemText
+                      primary={"Αίτηση"}
+                      classes={{ primary: classes.listItemText }}
+                    />
                   </ListItem>
                 </>
               )}

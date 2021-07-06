@@ -1,9 +1,7 @@
 import AuthContext from "../../context/authContext";
 import { useContext } from "react";
 import { jsPDF } from "jspdf";
-import { Container } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
+import { Container, Button, Paper } from "@material-ui/core";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import font from "../../fonts/LiberationSerif-Regular-normal";
 

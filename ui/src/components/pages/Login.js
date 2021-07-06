@@ -89,8 +89,8 @@ const Login = (props) => {
   const classes = useStyles();
 
   return (
-    <Container style={{ height: "100vh", minWidth: "20vw" }} maxWidth="xs">
-      {/* <CssBaseline /> */}
+    <Container style={{ height: "100vh", minWidth: "30vw" }} maxWidth="xs">
+      <CssBaseline />
       <Paper elevation={3}>
         <div className={classes.paper} style={{ padding: "1rem" }}>
           <Avatar
@@ -138,7 +138,7 @@ const Login = (props) => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={email}
                   onChange={onChange}
                   variant="outlined"
@@ -153,7 +153,7 @@ const Login = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={password}
                   onChange={onChange}
                   variant="outlined"

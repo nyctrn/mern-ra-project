@@ -128,10 +128,10 @@ const Register = (props) => {
     <Container
       component="main"
       maxWidth="xs"
-      style={{ height: "100vh", minWidth: "20vw" }}
+      style={{ height: "100vh", minWidth: "30vw" }}
     >
       <Paper elevation={3}>
-        {/* <CssBaseline /> */}
+        <CssBaseline />
         <div className={classes.paper} style={{ padding: "1rem" }}>
           <Avatar
             style={
@@ -184,7 +184,7 @@ const Register = (props) => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={firstName}
                   onChange={onChange}
                   autoComplete="fname"
@@ -200,7 +200,7 @@ const Register = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={lastName}
                   onChange={onChange}
                   variant="outlined"
@@ -215,7 +215,7 @@ const Register = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={email}
                   onChange={onChange}
                   variant="outlined"
@@ -230,7 +230,7 @@ const Register = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={password}
                   onChange={onChange}
                   variant="outlined"
@@ -247,7 +247,7 @@ const Register = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  inputProps={{ style: { fontSize: "1.4rem" } }}
                   value={password2}
                   onChange={onChange}
                   variant="outlined"

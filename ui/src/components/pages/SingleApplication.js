@@ -1,15 +1,20 @@
 import { useState, useContext } from "react";
 import AuthContext from "../../context/authContext";
-import { Divider, Paper } from "@material-ui/core/";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
+import {
+  Divider,
+  Paper,
+  Button,
+  Container,
+  Typography,
+} from "@material-ui/core/";
 import { Link } from "react-router-dom";
-import Check from "@material-ui/icons/Check";
-import Typography from "@material-ui/core/Typography";
-import Close from "@material-ui/icons/Close";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import {
+  Check,
+  Close,
+  ArrowBack,
+  ThumbDown,
+  ThumbUp,
+} from "@material-ui/icons";
 
 const SingleApplication = ({ applicant }) => {
   const authContext = useContext(AuthContext);
@@ -179,7 +184,7 @@ const SingleApplication = ({ applicant }) => {
             variant="contained"
             color="primary"
             style={{ backgroundColor: "#4caf50", float: "left" }}
-            startIcon={<ThumbUpIcon />}
+            startIcon={<ThumbUp />}
           >
             ΕΓΚΡΙΣΗ
           </Button>
@@ -189,7 +194,7 @@ const SingleApplication = ({ applicant }) => {
             variant="contained"
             color="primary"
             style={{ backgroundColor: "#e91e63", float: "right" }}
-            startIcon={<ThumbDownIcon />}
+            startIcon={<ThumbDown />}
           >
             ΑΠΟΡΡΙΨΗ
           </Button>
@@ -201,7 +206,7 @@ const SingleApplication = ({ applicant }) => {
             style={{ top: "20%" }}
             component={Link}
             to={"/applications"}
-            startIcon={<ArrowBackIcon />}
+            startIcon={<ArrowBack />}
           >
             ΕΠΙΣΤΡΟΦΗ
           </Button>
