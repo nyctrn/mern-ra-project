@@ -120,7 +120,7 @@ const Folder = () => {
                 </li>
                 <li>Υπηκοότητα: {currentUser.application.citizenship}</li>
                 <li>
-                  Αριθμός Ταυτότητας/Διαβατηρίου:
+                  Αριθμός Ταυτότητας/Διαβατηρίου:{" "}
                   {currentUser.application.idNumber}
                 </li>
                 <li>Δήμος: {currentUser.application.municipality}</li>

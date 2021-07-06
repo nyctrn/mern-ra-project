@@ -1,3 +1,5 @@
+##This project is a retirement application project
+
 # Run application locally
 
 In order to run the application locally, you will need:
@@ -5,6 +7,15 @@ In order to run the application locally, you will need:
 - NodeJs
 - npm
 - Mongodb connection string (either from MongoDB Atlas or from local deployment)
+	- You fast and easy testing you can download mongodb image and run the container
+	
+	```bash
+	docker pull mongo
+	docker run -d  --name mongo-on-docker  -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=<_put mongodb username here_> -e MONGO_INITDB_ROOT_PASSWORD=<_put mongodb password string here_>
+
+	```
+
+	- Then create the connection string likes this: mongodb://<_username_>:<_password_>@localhost:27017/?authSource=admin
 
 ```bash
 cd api
@@ -160,6 +171,8 @@ URL: https://marioskour.cloudns.cl/
 
 	- email: itp20158@hua.gr
 	- password: itp20158
+
+## 
 
 
 # Application overview
