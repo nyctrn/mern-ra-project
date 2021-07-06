@@ -50,6 +50,7 @@ for ui:
 docker pull mailhog/mailhog
 docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
 ```
+
 	- 1025 port is the default for the SMTP server, and 8025 for the HTTP server
 	- To connect to the WebUI go to http://localhost:8025/
 
