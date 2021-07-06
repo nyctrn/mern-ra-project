@@ -44,12 +44,14 @@ for ui:
 
 - REACT_APP_API_URL=http://localhost:6050
 
-to run mailhog using docker:
+- If you want the mailing system to work you will need mailhog service. A fast and easy way to run it locally, is using docker like this:
 
 ```bash
 docker pull mailhog/mailhog
 docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
 ```
+
+- Finally, to start the application:
 
 ```bash
 cd api:
@@ -58,9 +60,9 @@ npm run dev
 
 # Deploy the project to a kubernetes cluster
 
-- connect to cluster
+- Connect to the cluster
 
-## persistent volumes
+## persistent volume
 
 ```bash
 kubectl apply -f k8s/db/mongodb-pvc.yml
