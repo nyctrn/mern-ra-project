@@ -16,7 +16,10 @@ In order to run the application locally, you will need:
 
 	```
 
-	- Then create the connection string likes this: mongodb://<_username_>:<_password_>@localhost:27017/?authSource=admin
+	- Then create the connection string likes this: 
+	```	
+	mongodb://<_username_>:<_password_>@localhost:27017/?authSource=admin
+	```
 	- Add this connection string into the api .env file
 
 ```bash
