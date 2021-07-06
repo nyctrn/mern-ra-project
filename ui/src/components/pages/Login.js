@@ -1,16 +1,17 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "./../../context/authContext";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import PermIdentity from "@material-ui/icons/PermIdentity";
-import Close from "@material-ui/icons/Close";
-import Check from "@material-ui/icons/Check";
-import Typography from "@material-ui/core/Typography";
+import {
+  Avatar,
+  Button,
+  TextField,
+  Grid,
+  Typography,
+  Container,
+  CssBaseline,
+  Paper,
+} from "@material-ui/core";
+import { Close, Check, PermIdentity } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,7 +50,6 @@ const Login = (props) => {
     }
 
     if (error) {
-      // setAlert(error, "danger");
       setTimeout(() => {
         clearErrors();
       }, 3000);
@@ -89,105 +89,107 @@ const Login = (props) => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar
-          style={
-            isAuthenticated
-              ? {
-                  backgroundColor: "#4caf50",
-                  transitionDuration: "0.3s",
-                  transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.2s",
-                }
-              : error
-              ? {
-                  backgroundColor: "red",
-                  transitionDuration: "0.5s",
-                  transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.3s",
-                }
-              : {
-                  transitionDuration: "0.0s",
-                  transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.0s",
-                }
-          }
-          className={classes.avatar}
-        >
-          <PermIdentity />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Σύνδεση χρήστη{" "}
-          {isAuthenticated && (
-            <>
-              <span>επιτυχής!</span>
-              <Check
-                style={{
-                  color: "#4caf50",
-                  verticalAlign: "bottom",
-                  fontSize: "2rem",
-                }}
-              />
-            </>
-          )}
-        </Typography>
-        {/* {!isAuthenticated && ( */}
-        <form onSubmit={onSubmit} className={classes.form}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                value={email}
-                onChange={onChange}
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="E-mail"
-                name="email"
-                autoComplete="email"
-                disabled={isAuthenticated}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                value={password}
-                onChange={onChange}
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Κωδικός χρήστη"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                disabled={isAuthenticated}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            style={{ backgroundColor: "#349aa0", color: "#ffffff" }}
-            className={classes.submit}
+    <Container style={{ height: "100vh", minWidth: "20vw" }} maxWidth="xs">
+      {/* <CssBaseline /> */}
+      <Paper elevation={3}>
+        <div className={classes.paper} style={{ padding: "1rem" }}>
+          <Avatar
+            style={
+              isAuthenticated
+                ? {
+                    backgroundColor: "#4caf50",
+                    transitionDuration: "0.3s",
+                    transitionTimingFunction: "ease-out",
+                    transitionDelay: "0.2s",
+                  }
+                : error
+                ? {
+                    backgroundColor: "red",
+                    transitionDuration: "0.5s",
+                    transitionTimingFunction: "ease-out",
+                    transitionDelay: "0.3s",
+                  }
+                : {
+                    transitionDuration: "0.5",
+                    transitionTimingFunction: "ease-out",
+                    transitionDelay: "0.3s",
+                  }
+            }
+            className={classes.avatar}
           >
-            ΣΥΝΔΕΣΗ
-          </Button>{" "}
-          {error && (
-            <div
-              style={{
-                float: "right",
-              }}
+            <PermIdentity />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Σύνδεση χρήστη{" "}
+            {isAuthenticated && (
+              <>
+                <span>επιτυχής!</span>
+                <Check
+                  style={{
+                    color: "#4caf50",
+                    verticalAlign: "bottom",
+                    fontSize: "2rem",
+                  }}
+                />
+              </>
+            )}
+          </Typography>
+          <form onSubmit={onSubmit} className={classes.form}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  value={email}
+                  onChange={onChange}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="E-mail"
+                  name="email"
+                  autoComplete="email"
+                  disabled={isAuthenticated}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
+                  value={password}
+                  onChange={onChange}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Κωδικός χρήστη"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  disabled={isAuthenticated}
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              style={{ backgroundColor: "#349aa0", color: "#ffffff" }}
+              className={classes.submit}
             >
-              Λάθος στοιχεία!
-              <Close style={{ color: "red", verticalAlign: "bottom" }} />
-            </div>
-          )}
-        </form>
-        {/* )} */}
-      </div>
+              ΣΥΝΔΕΣΗ
+            </Button>{" "}
+            {error && (
+              <div
+                style={{
+                  float: "right",
+                }}
+              >
+                Λάθος στοιχεία!
+                <Close style={{ color: "red", verticalAlign: "bottom" }} />
+              </div>
+            )}
+          </form>
+        </div>
+      </Paper>
     </Container>
   );
 };

@@ -1,18 +1,14 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "../../context/authContext";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import Check from "@material-ui/icons/Check";
-import Typography from "@material-ui/core/Typography";
-import EditIcon from "@material-ui/icons/Edit";
-import Close from "@material-ui/icons/Close";
+import { Button, TextField, Grid, Typography } from "@material-ui/core";
+import { Check, Edit, Close } from "@material-ui/icons";
 
 const EditAppForm = () => {
   const authContext = useContext(AuthContext);
   const { error, clearErrors, currentUser, formEdit } = authContext;
 
   const {
+    applicationId,
     firstName,
     lastName,
     fName,
@@ -87,7 +83,7 @@ const EditAppForm = () => {
     //setAlert("password do not match", "danger");  --> !!!
 
     await formEdit({
-      applicationId: currentUser.applicationId,
+      applicationId: applicationId,
       id: currentUser._id,
       firstName: application.firstName,
       lastName: application.lastName,
@@ -145,25 +141,25 @@ const EditAppForm = () => {
   ];
 
   return (
-    <div>
+    <div style={{ padding: "1rem", paddingBottom: "2rem", marginTop: "3rem" }}>
       {currentUser.application && (
         <>
-          <h2>Έχετε ήδη υποβάλει αίτηση συνταξιοδότησης</h2>
-          <h3 style={{ float: "right" }}>
+          <h2 style={{ fontSize: "1.5rem" }}>
+            Έχετε ήδη υποβάλει αίτηση συνταξιοδότησης
+          </h2>
+          <h2 style={{ float: "right" }}>
             Επεξεργασία αίτησης:{" "}
             <>
-              <EditIcon
-                onClick={handleSwitchEdit}
-                style={{ cursor: "pointer" }}
-              />
+              <Edit onClick={handleSwitchEdit} style={{ cursor: "pointer" }} />
             </>
-          </h3>
+          </h2>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               {formFields.map((field) => {
                 return (
                   <Grid key={field.fieldName} item xs={12}>
                     <TextField
+                      inputProps={{ style: { fontSize: "1.2rem" } }}
                       value={application[`${field.fieldName}`]}
                       onChange={onChange}
                       autoComplete={field.fieldName}
@@ -205,7 +201,7 @@ const EditAppForm = () => {
             )}
 
             {editSuccess && (
-              <>
+              <div style={{ paddingTop: "1rem" }}>
                 <Typography component="h1" variant="h5">
                   Επεξεργασία αίτησης επιτυχής!
                   <Check
@@ -216,7 +212,7 @@ const EditAppForm = () => {
                     }}
                   />
                 </Typography>
-              </>
+              </div>
             )}
             {error && error[0].msg && (
               <div

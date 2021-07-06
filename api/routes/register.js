@@ -35,10 +35,9 @@ router.post(
       let user = await User.findOne({ email });
 
       if (user) {
-        return res.status(400).json({ msg: "user exists" });
+        return res.status(400).json({ msg: [{ msg: "user already exists" }] });
       }
 
-      // make password a secret in kubernetes
       if (!code) {
         user = new User({
           firstName,
@@ -55,7 +54,7 @@ router.post(
           title: 1,
         });
       } else {
-        return res.status(400).json({ msg: "wrong code" });
+        return res.status(400).json({ msg: [{ msg: "wrong code" }] });
       }
 
       const salt = await bcrypt.genSalt(10);

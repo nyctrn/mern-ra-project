@@ -3,39 +3,45 @@ import FolderSharedIcon from "@material-ui/icons/FolderShared";
 
 const RegisteredUserHome = () => {
   return (
-    <body>
-      <div className="container" style={{ width: "85%" }}>
+    <>
+      <div>
         <h1 style={{ textAlign: "center" }}>
-          Καλώς ήρθατε στην Εφαρμογή Υποβολής Αιτήσεων Συνταξιοδότησης
+          Καλώς ήλθατε στην Εφαρμογή Υποβολής Αιτήσεων Συνταξιοδότησης
         </h1>
         <br></br>
         <ul>
           <li>
-            <h2>
+            <p style={{ textAlign: "left", fontSize: "1.4rem" }}>
               Για δημιουργία και υποβολή αίτησης συνταξιοδότησης πατήστε
               αριστερά στο κουμπί "Αίτηση"{" "}
               {<ListAlt style={{ verticalAlign: "text-bottom" }} />}.
-            </h2>
+            </p>
           </li>
           <li>
-            <h2>
+            <p style={{ textAlign: "left", fontSize: "1.4rem" }}>
               Για προβολή κάποιας υπάρχουσας αίτησης ή επεξεργασία πατήστε
               αριστερά στο κουμπί "Ο φάκελός μου"{" "}
               {<FolderSharedIcon style={{ verticalAlign: "text-bottom" }} />}.
-            </h2>
+            </p>
           </li>
           <li>
-            <h2>
+            <p
+              style={{
+                textAlign: "left",
+                fontSize: "1.4rem",
+                paddingBottom: "1rem",
+              }}
+            >
               Για παραλαβή της αίτησής σας, εφόσον έχει εγκριθεί, πατήστε στο
               κουμπί "Ο φάκελός μου"{" "}
               {<FolderSharedIcon style={{ verticalAlign: "text-bottom" }} />}{" "}
               και επιλέξτε την αίτησή σας, στη συνέχεια επιλέξτε "Λήψη αίτησης
               σε PDF"
-            </h2>
+            </p>
           </li>
         </ul>
       </div>
-    </body>
+    </>
   );
 };
 

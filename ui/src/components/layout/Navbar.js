@@ -139,12 +139,17 @@ const Navbar = ({ title, icon }) => {
           variant="contained"
           className={classes.buttons}
           component={Link}
-          style={{ textTransform: "none", color: "#000000" }}
+          style={{
+            textTransform: "none",
+            color: "#000000",
+            fontSize: "1rem",
+            // fontWeight: "bold",
+          }}
           color="inherit"
           onClick={onLogout}
           to="#!"
         >
-          <ExitToApp style={{ fontSize: "1rem" }} /> Αποσύνδεση
+          Αποσύνδεση <ExitToApp style={{ fontSize: "1.1rem" }} />
         </Button>
       </span>
     </>
@@ -160,6 +165,8 @@ const Navbar = ({ title, icon }) => {
         style={{
           textTransform: "none",
           color: "#000000",
+          fontSize: "1rem",
+          // fontWeight: "bold",
         }}
         color="inherit"
       >
@@ -170,7 +177,12 @@ const Navbar = ({ title, icon }) => {
         className={classes.buttons}
         component={Link}
         to={"/register"}
-        style={{ textTransform: "none", color: "#000000" }}
+        style={{
+          textTransform: "none",
+          color: "#000000",
+          fontSize: "1rem",
+          // fontWeight: "bold",
+        }}
         color="inherit"
       >
         Εγγραφή
@@ -206,7 +218,12 @@ const Navbar = ({ title, icon }) => {
             <div className={classes.title}>
               <Typography
                 variant="h5"
-                style={{ textDecoration: "none", color: "#ffffff" }}
+                style={{
+                  textDecoration: "none",
+                  color: "#ffffff",
+                  fontSize: "1.6rem",
+                  textShadow: "rgb(0 0 0 / 40%) 1px 1px 4px",
+                }}
                 component={Link}
                 to={"/"}
               >
@@ -219,7 +236,12 @@ const Navbar = ({ title, icon }) => {
               className={classes.buttons}
               component={Link}
               to={"/"}
-              style={{ textTransform: "none", color: "#000000" }}
+              style={{
+                textTransform: "none",
+                color: "#000000",
+                fontSize: "1rem",
+                // fontWeight: "bold",
+              }}
               color="inherit"
             >
               Αρχική
@@ -230,7 +252,12 @@ const Navbar = ({ title, icon }) => {
                 className={classes.buttons}
                 component={Link}
                 to={"/about"}
-                style={{ textTransform: "none", color: "#000000" }}
+                style={{
+                  textTransform: "none",
+                  color: "#000000",
+                  fontSize: "1rem",
+                  // fontWeight: "bold",
+                }}
                 color="inherit"
               >
                 Πληροφορίες

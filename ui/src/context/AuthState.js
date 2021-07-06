@@ -222,6 +222,13 @@ const AuthState = (props) => {
     });
   };
 
+  const raiseError = (error) => {
+    dispatch({
+      type: "RAISE_ERROR",
+      payload: error,
+    });
+  };
+
   ///////////////////////////////////
 
   return (
@@ -247,6 +254,7 @@ const AuthState = (props) => {
         formEdit,
         showSingleApplication,
         justLogged,
+        raiseError,
       }}
     >
       {props.children}

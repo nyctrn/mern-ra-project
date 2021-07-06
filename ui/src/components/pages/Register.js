@@ -1,19 +1,22 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "./../../context/authContext";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import PermIdentity from "@material-ui/icons/PermIdentity";
-import Check from "@material-ui/icons/Check";
-import Typography from "@material-ui/core/Typography";
+
+import {
+  Avatar,
+  Button,
+  TextField,
+  Grid,
+  Typography,
+  Container,
+  Paper,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  CssBaseline,
+} from "@material-ui/core";
+
+import { Close, Check, PermIdentity } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Close from "@material-ui/icons/Close";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 const Register = (props) => {
   const authContext = useContext(AuthContext);
 
-  const { register, error, clearErrors, isAuthenticated } = authContext;
+  const { register, error, clearErrors, isAuthenticated, raiseError } =
+    authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -50,15 +54,27 @@ const Register = (props) => {
     if (error) {
       setTimeout(() => {
         clearErrors();
-      }, 2400);
-      setUser({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        password2: "",
-        code: "",
-      });
+      }, 3000);
+
+      if (
+        error[0].msg === "please enter a pass with 6+ chars" ||
+        error === "passwords do not match"
+      ) {
+        setUser({ ...user, password: "", password2: "" });
+      } else if (error[0].msg === "wrong code") {
+        setUser({ ...user, code: "" });
+      } else if (error[0].msg === "include a valid email") {
+        setUser({ ...user, email: "" });
+      } else {
+        setUser({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          password2: "",
+          code: "",
+        });
+      }
     }
     // eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
@@ -92,6 +108,8 @@ const Register = (props) => {
     ) {
       // setAlert("please enter all fields", "danger"); --> fix alerts
     } else if (password !== password2) {
+      raiseError("passwords do not match");
+
       // setAlert("password do not match", "danger"); --> fix alerts
     } else {
       register({
@@ -107,60 +125,66 @@ const Register = (props) => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar
-          style={
-            isAuthenticated
-              ? {
-                  backgroundColor: "#4caf50",
-                  transitionDuration: "0.3s",
-                  transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.2s",
-                }
-              : error
-              ? {
-                  backgroundColor: "red",
-                  transitionDuration: "0.5s",
-                  transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.3s",
-                }
-              : {
-                  transitionDuration: "0.5s",
-                  transitionTimingFunction: "ease-out",
-                  transitionDelay: "0.3s",
-                }
-          }
-          className={classes.avatar}
-        >
-          {/* <LockOutlinedIcon /> */}
-          <PermIdentity />
-        </Avatar>
-        <Typography
-          component="h1"
-          variant="h6"
-          style={{ fontSize: "1.5rem", width: "31vw", textAlign: "center" }}
-        >
-          Δημιουργία λογαριασμού{" "}
-          {isAuthenticated && (
-            <>
-              <span>επιτυχής!</span>
-              <Check
-                style={{
-                  color: "#4caf50",
-                  verticalAlign: "bottom",
-                  fontSize: "2rem",
-                }}
-              />{" "}
-            </>
-          )}{" "}
-        </Typography>
-        {!isAuthenticated && (
+    <Container
+      component="main"
+      maxWidth="xs"
+      style={{ height: "100vh", minWidth: "20vw" }}
+    >
+      <Paper elevation={3}>
+        {/* <CssBaseline /> */}
+        <div className={classes.paper} style={{ padding: "1rem" }}>
+          <Avatar
+            style={
+              isAuthenticated
+                ? {
+                    backgroundColor: "#4caf50",
+                    transitionDuration: "0.3s",
+                    transitionTimingFunction: "ease-out",
+                    transitionDelay: "0.2s",
+                  }
+                : error
+                ? {
+                    backgroundColor: "red",
+                    transitionDuration: "0.5s",
+                    transitionTimingFunction: "ease-out",
+                    transitionDelay: "0.3s",
+                  }
+                : {
+                    transitionDuration: "0.5s",
+                    transitionTimingFunction: "ease-out",
+                    transitionDelay: "0.3s",
+                  }
+            }
+            className={classes.avatar}
+          >
+            {/* <LockOutlinedIcon /> */}
+            <PermIdentity />
+          </Avatar>
+          <Typography
+            component="h1"
+            variant="h6"
+            style={{ fontSize: "1.5rem", width: "31vw", textAlign: "center" }}
+          >
+            Δημιουργία λογαριασμού{" "}
+            {isAuthenticated && (
+              <>
+                <span>επιτυχής!</span>
+                <Check
+                  style={{
+                    color: "#4caf50",
+                    verticalAlign: "bottom",
+                    fontSize: "2rem",
+                  }}
+                />{" "}
+              </>
+            )}{" "}
+          </Typography>
+
           <form onSubmit={onSubmit} className={classes.form}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
                   value={firstName}
                   onChange={onChange}
                   autoComplete="fname"
@@ -171,10 +195,12 @@ const Register = (props) => {
                   id="firstName"
                   label="Όνομα"
                   autoFocus
+                  disabled={isAuthenticated}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
                   value={lastName}
                   onChange={onChange}
                   variant="outlined"
@@ -184,10 +210,12 @@ const Register = (props) => {
                   label="Επώνυμο"
                   name="lastName"
                   autoComplete="lname"
+                  disabled={isAuthenticated}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
                   value={email}
                   onChange={onChange}
                   variant="outlined"
@@ -197,10 +225,12 @@ const Register = (props) => {
                   label="E-mail"
                   name="email"
                   autoComplete="email"
+                  disabled={isAuthenticated}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
                   value={password}
                   onChange={onChange}
                   variant="outlined"
@@ -211,11 +241,13 @@ const Register = (props) => {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  // minLength="6"
+                  minLength="6"
+                  disabled={isAuthenticated}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontSize: "1.3rem" } }}
                   value={password2}
                   onChange={onChange}
                   variant="outlined"
@@ -226,6 +258,7 @@ const Register = (props) => {
                   type="password"
                   id="password2"
                   autoComplete="current-password"
+                  disabled={isAuthenticated}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -236,6 +269,7 @@ const Register = (props) => {
                         checked={checked}
                         onChange={handleChange}
                         name="checked"
+                        disabled={isAuthenticated}
                       />
                     }
                     label="Υπάλληλος;"
@@ -251,6 +285,7 @@ const Register = (props) => {
                       name="code"
                       type="password"
                       required
+                      disabled={isAuthenticated}
                     />
                   )}
                 </FormGroup>
@@ -265,12 +300,6 @@ const Register = (props) => {
             >
               Εγγραφη
             </Button>{" "}
-            {isAuthenticated && (
-              <span style={{ float: "right" }}>
-                Επιτυχής εγγραφή!
-                <Check style={{ color: "#4caf50", verticalAlign: "bottom" }} />
-              </span>
-            )}
             {error && (
               <div
                 style={{
@@ -280,26 +309,28 @@ const Register = (props) => {
                 {error === "user exists" && (
                   <span>Υπάρχει ήδη χρήστης με τέτοιο email!</span>
                 )}
-                {error === "wrong code" && (
-                  <span>"Λάθος 10-ψήφιος κωδικός!</span>
+                {error[0].msg === "wrong code" && (
+                  <span>Λάθος 10-ψήφιος κωδικός!</span>
+                )}
+                {error[0].msg === "include a valid email" && (
+                  <span>Παρακαλώ εισάγετε ένα έγκυρο email!</span>
+                )}
+                {error[0].msg === "please enter a pass with 6+ chars" && (
+                  <span>
+                    Παρακαλώ εισάγετε κωδικό χρήστη τουλάχιστον 6 χαρακτήρων
+                  </span>
+                )}
+                {error === "passwords do not match" && (
+                  <span>
+                    Κωδικός χρήστη διαφορετικός από τον κωδικό επαλήθευσης!
+                  </span>
                 )}
                 <Close style={{ color: "red", verticalAlign: "bottom" }} />
               </div>
             )}
           </form>
-        )}
-        {error && error[0].msg && (
-          <div
-            style={{
-              float: "right",
-            }}
-          >
-            <span>{error[0].msg}</span>
-
-            <Close style={{ color: "red", verticalAlign: "bottom" }} />
-          </div>
-        )}
-      </div>
+        </div>
+      </Paper>
     </Container>
   );
 };

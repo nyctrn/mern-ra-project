@@ -3,18 +3,20 @@ import SingleApplication from "../pages/SingleApplication";
 import AuthContext from "../../context/authContext";
 import { v4 as uuid } from "uuid";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-import Container from "@material-ui/core/Container";
-import Snackbar from "@material-ui/core/Snackbar";
-import Slide from "@material-ui/core/Slide";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import {
+  Table,
+  Paper,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Container,
+  Snackbar,
+  Slide,
+  CircularProgress,
+} from "@material-ui/core";
 
 const columns = [
   { id: "firstName", label: "Όνομα", minWidth: 170 },
@@ -29,7 +31,7 @@ const useStyles = makeStyles({
     width: "100%",
   },
   container: {
-    maxHeight: 440,
+    maxHeight: 640,
   },
 });
 
@@ -122,25 +124,25 @@ const Applications = (props) => {
   };
 
   return (
-    <Container maxWidth="lg" style={{ marginBottom: "4px" }}>
-      <Paper>
-        <Snackbar
-          open={muiState.open}
-          onClose={handleClose}
-          TransitionComponent={muiState.Transition}
-          message="Υπάρχει νέα αίτηση"
-          // key={muiState.Transition.name}
-        />
+    <Container style={{ height: "100vh" }} maxWidth="lg">
+      <Snackbar
+        open={muiState.open}
+        onClose={handleClose}
+        TransitionComponent={muiState.Transition}
+        message="Υπάρχει νέα αίτηση"
+        // key={muiState.Transition.name}
+      />
 
-        {state.single_application ? (
-          <SingleApplication applicant={applicant} />
-        ) : (
-          <>
+      {state.single_application ? (
+        <SingleApplication applicant={applicant} />
+      ) : (
+        <>
+          <Paper elevation={2}>
             <h1>Αιτήσεις</h1>
             {loading ? (
               <CircularProgress style={{ margin: "5% 50%" }} />
             ) : users.length ? (
-              <Paper className={classes.root}>
+              <>
                 <TableContainer className={classes.container}>
                   <Table stickyHeader aria-label="sticky table">
                     <TableHead>
@@ -149,7 +151,10 @@ const Applications = (props) => {
                           <TableCell
                             key={column.id}
                             align={column.align}
-                            style={{ minWidth: column.minWidth }}
+                            style={{
+                              minWidth: column.minWidth,
+                              fontSize: "1.2rem",
+                            }}
                           >
                             {column.label}
                           </TableCell>
@@ -174,7 +179,10 @@ const Applications = (props) => {
                                 const value = row.application[column.id];
                                 return (
                                   <TableCell
-                                    style={{ cursor: "pointer" }}
+                                    style={{
+                                      cursor: "pointer",
+                                      fontSize: "1.1rem",
+                                    }}
                                     onClick={(e) => {
                                       openApplication(e, row);
                                     }}
@@ -203,13 +211,13 @@ const Applications = (props) => {
                   onChangeRowsPerPage={handleChangeRowsPerPage}
                   labelRowsPerPage="Αιτήσεις ανά σελίδα"
                 />
-              </Paper>
+              </>
             ) : (
               <h2 style={{ textAlign: "center" }}>Δεν υπάρχουν αιτήσεις</h2>
             )}
-          </>
-        )}
-      </Paper>
+          </Paper>
+        </>
+      )}
     </Container>
   );
 };
