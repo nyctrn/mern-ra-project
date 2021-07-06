@@ -57,7 +57,7 @@ const Folder = () => {
       Κινητό: ${currentUser.application.mobileNumber}
       E-mail: ${currentUser.application.email}
                                     
-                                    Εγκρύνεται`
+                                    Εγκρίνεται`
     );
     doc.save("αίτηση_συνταξιοδότησης.pdf");
   };

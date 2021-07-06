@@ -172,7 +172,11 @@ const Login = (props) => {
               type="submit"
               fullWidth
               variant="contained"
-              style={{ backgroundColor: "#349aa0", color: "#ffffff" }}
+              style={
+                isAuthenticated
+                  ? { background: "#99a1a2e0", color: "#ffffff" }
+                  : { backgroundColor: "#349aa0", color: "#ffffff" }
+              }
               className={classes.submit}
             >
               ΣΥΝΔΕΣΗ

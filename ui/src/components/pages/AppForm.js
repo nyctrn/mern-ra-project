@@ -57,7 +57,7 @@ const AppForm = (props) => {
       // setRegSuccess(true);
       setTimeout(() => {
         props.history.push("/");
-      }, 1600);
+      }, 2000);
       setTimeout(() => {
         // setRegSuccess(false);
       }, 1500);
@@ -168,7 +168,13 @@ const AppForm = (props) => {
     <Container style={{ height: "100%", marginBottom: "8rem" }} maxWidth="lg">
       <Paper
         style={
-          applicationSubmission ? { height: "1150px" } : { height: "10rem" }
+          !currentUser.application
+            ? { height: "1150px" }
+            : currentUser.application.status === "εκκρεμής"
+            ? { height: "1170px" }
+            : applicationSubmission
+            ? { height: "8rem" }
+            : { height: "8rem" }
         }
       >
         {!currentUser.application ? (
@@ -194,77 +200,83 @@ const AppForm = (props) => {
               >
                 <ListAlt />
               </Avatar>
-              {!applicationSubmission && (
-                <>
-                  <Typography
-                    component="h1"
-                    variant="h5"
-                    style={{ color: "black" }}
+
+              <>
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  style={{ color: "black" }}
+                >
+                  Αίτηση Συνταξιοδότησης
+                </Typography>
+
+                <form onSubmit={onSubmit} className={classes.form}>
+                  <Grid container spacing={2}>
+                    {formFields.map((field) => {
+                      return (
+                        <Grid key={field.fieldName} item xs={12}>
+                          <TextField
+                            inputProps={{ style: { fontSize: "1.1rem" } }}
+                            value={application[`${field.fieldName}`]}
+                            onChange={onChange}
+                            autoComplete={field.fieldName}
+                            name={field.fieldName}
+                            variant="outlined"
+                            disabled={applicationSubmission}
+                            // required
+                            fullWidth
+                            id={field.fieldName}
+                            label={field.labelName}
+                            size="small"
+                            InputLabelProps={
+                              field.fieldName === "birthday"
+                                ? {
+                                    shrink: true,
+                                  }
+                                : null
+                            }
+                            type={
+                              field.fieldName === "birthday" ? "date" : null
+                            }
+                          />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    style={
+                      applicationSubmission
+                        ? { background: "#99a1a2e0", color: "#ffffff" }
+                        : { background: "#349aa0", color: "#ffffff" }
+                    }
+                    className={classes.submit}
+                    disabled={applicationSubmission}
                   >
-                    Αίτηση Συνταξιοδότησης
-                  </Typography>
-
-                  <form onSubmit={onSubmit} className={classes.form}>
-                    <Grid container spacing={2}>
-                      {formFields.map((field) => {
-                        return (
-                          <Grid key={field.fieldName} item xs={12}>
-                            <TextField
-                              inputProps={{ style: { fontSize: "1.1rem" } }}
-                              value={application[`${field.fieldName}`]}
-                              onChange={onChange}
-                              autoComplete={field.fieldName}
-                              name={field.fieldName}
-                              variant="outlined"
-                              // required
-                              fullWidth
-                              id={field.fieldName}
-                              label={field.labelName}
-                              size="small"
-                              InputLabelProps={
-                                field.fieldName === "birthday"
-                                  ? {
-                                      shrink: true,
-                                    }
-                                  : null
-                              }
-                              type={
-                                field.fieldName === "birthday" ? "date" : null
-                              }
-                            />
-                          </Grid>
-                        );
-                      })}
-                    </Grid>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      style={{ background: "#349aa0", color: "#ffffff" }}
-                      className={classes.submit}
+                    ΥΠΟΒΟΛΗ ΑΙΤΗΣΗΣ
+                  </Button>{" "}
+                  {error && error[0].msg && (
+                    <div
+                      style={{
+                        float: "right",
+                      }}
                     >
-                      ΥΠΟΒΟΛΗ ΑΙΤΗΣΗΣ
-                    </Button>{" "}
-                    {error && error[0].msg && (
-                      <div
-                        style={{
-                          float: "right",
-                        }}
-                      >
-                        <span>{error[0].msg}</span>
+                      <span>{error[0].msg}</span>
 
-                        <Close
-                          style={{ color: "red", verticalAlign: "bottom" }}
-                        />
-                      </div>
-                    )}
-                  </form>
-                </>
-              )}
+                      <Close
+                        style={{ color: "red", verticalAlign: "bottom" }}
+                      />
+                    </div>
+                  )}
+                </form>
+              </>
+
               {applicationSubmission && (
                 <>
                   <Typography component="h1" variant="h5">
-                    Η αίτηση της συνταξιοδότησής σας στάλθηκε επιτυχώς!
+                    Η αίτηση της συνταξιοδότησής σας υποβλήθηκε επιτυχώς!
                     <Check
                       style={{
                         color: "#4caf50",
@@ -281,10 +293,10 @@ const AppForm = (props) => {
           <EditAppForm />
         ) : (
           <div style={{ textAlign: "center" }}>
-            <Paper>
-              <h2>Δεν μπορείτε να επεξεργαστείτε την αίτησή σας</h2>
-              <h2>Κατάσταση αίτησης: {currentUser.application.status}</h2>
-            </Paper>
+            {/* <Paper> */}
+            <h2>Δεν μπορείτε να επεξεργαστείτε την αίτησή σας</h2>
+            <h2>Κατάσταση αίτησης: {currentUser.application.status}</h2>
+            {/* </Paper> */}
           </div>
         )}
       </Paper>

@@ -13,15 +13,25 @@ const RegisteredUserHome = () => {
           <li>
             <p style={{ textAlign: "left", fontSize: "1.4rem" }}>
               Για δημιουργία και υποβολή αίτησης συνταξιοδότησης πατήστε
-              αριστερά στο κουμπί "Αίτηση"{" "}
-              {<ListAlt style={{ verticalAlign: "text-bottom" }} />}.
+              αριστερά στο κουμπί{" "}
+              {
+                <ListAlt
+                  style={{ fontSize: "1.7rem", verticalAlign: "text-bottom" }}
+                />
+              }{" "}
+              "Αίτηση" .
             </p>
           </li>
           <li>
             <p style={{ textAlign: "left", fontSize: "1.4rem" }}>
               Για προβολή κάποιας υπάρχουσας αίτησης ή επεξεργασία πατήστε
-              αριστερά στο κουμπί "Ο φάκελός μου"{" "}
-              {<FolderSharedIcon style={{ verticalAlign: "text-bottom" }} />}.
+              αριστερά στο κουμπί{" "}
+              {
+                <FolderSharedIcon
+                  style={{ fontSize: "1.7rem", verticalAlign: "text-bottom" }}
+                />
+              }{" "}
+              "Ο φάκελός μου" .
             </p>
           </li>
           <li>
@@ -33,10 +43,14 @@ const RegisteredUserHome = () => {
               }}
             >
               Για παραλαβή της αίτησής σας, εφόσον έχει εγκριθεί, πατήστε στο
-              κουμπί "Ο φάκελός μου"{" "}
-              {<FolderSharedIcon style={{ verticalAlign: "text-bottom" }} />}{" "}
-              και επιλέξτε την αίτησή σας, στη συνέχεια επιλέξτε "Λήψη αίτησης
-              σε PDF"
+              κουμπί{" "}
+              {
+                <FolderSharedIcon
+                  style={{ fontSize: "1.7rem", verticalAlign: "text-bottom" }}
+                />
+              }{" "}
+              "Ο φάκελός μου" και επιλέξτε την αίτησή σας, στη συνέχεια επιλέξτε
+              "Λήψη αίτησης σε PDF"
             </p>
           </li>
         </ul>

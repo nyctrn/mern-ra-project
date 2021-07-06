@@ -80,9 +80,16 @@ const Home = () => {
                       <li>
                         <p style={{ textAlign: "left", fontSize: "1.4rem" }}>
                           Για προβολή όλων των αιτήσεων πατήστε αριστερά στο
-                          κουμπί "Αιτήσεις"{" "}
-                          {<ListAlt style={{ verticalAlign: "text-bottom" }} />}
-                          .
+                          κουμπί{" "}
+                          {
+                            <ListAlt
+                              style={{
+                                fontSize: "1.7rem",
+                                verticalAlign: "text-bottom",
+                              }}
+                            />
+                          }{" "}
+                          "Αιτήσεις" .
                         </p>
                       </li>
                       <li>

@@ -176,13 +176,18 @@ URL: https://marioskour.cloudns.cl/
 	- email: gspan@gmail.com
 	- password: g123456
 
+### Registration code for employees: "jg9j#4*81n"
+
 ## Citizen test accounts:
 
 	- email: gereustath@otenet.gr
 	- password: gerarimos1
 
-	- email: itp20158@hua.gr
-	- password: itp20158
+	- email: fotthod@gmail.com
+	- password: fot123
+
+
+	
 
 ## 
 
