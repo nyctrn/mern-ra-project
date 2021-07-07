@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.light,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -54,13 +54,10 @@ const AppForm = (props) => {
       }, 3000);
     }
     if (error === "no errors" && !currentUser.application) {
-      // setRegSuccess(true);
       setTimeout(() => {
         props.history.push("/");
       }, 2000);
-      setTimeout(() => {
-        // setRegSuccess(false);
-      }, 1500);
+      setTimeout(() => {}, 1500);
     }
 
     // eslint-disable-next-line
@@ -109,11 +106,7 @@ const AppForm = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // if (firstName === "" || lastName === "" || email === "") {
-    //   // setAlert("please enter all fields", "danger");  --> fix alerts
-    //   // } else if () {
-    //   //   setAlert("password do not match", "danger"); --> fix alerts
-    // } else {
+
     formApplication({
       applicationId: uuid().slice(0, 13),
       firstName,
@@ -134,13 +127,6 @@ const AppForm = (props) => {
       email,
       currentUser,
     });
-
-    // if (!error) {
-    //   setTimeout(() => {
-    //     props.history.push("/");
-    //   }, 1800);
-    // }
-    // }
   };
 
   const formFields = [
@@ -223,11 +209,11 @@ const AppForm = (props) => {
                             name={field.fieldName}
                             variant="outlined"
                             disabled={applicationSubmission}
-                            // required
                             fullWidth
                             id={field.fieldName}
                             label={field.labelName}
                             size="small"
+                            // required
                             InputLabelProps={
                               field.fieldName === "birthday"
                                 ? {
@@ -293,10 +279,8 @@ const AppForm = (props) => {
           <EditAppForm />
         ) : (
           <div style={{ textAlign: "center" }}>
-            {/* <Paper> */}
             <h2>Δεν μπορείτε να επεξεργαστείτε την αίτησή σας</h2>
             <h2>Κατάσταση αίτησης: {currentUser.application.status}</h2>
-            {/* </Paper> */}
           </div>
         )}
       </Paper>

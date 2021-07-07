@@ -51,6 +51,7 @@ const Folder = () => {
       Υπηκοότητα: ${currentUser.application.citizenship}
       Αριθμός Ταυτότητας/Διαβατηρίου: ${currentUser.application.idNumber}
       Δήμος: ${currentUser.application.municipality}
+      Πόλη: ${currentUser.application.city}
       Διεύθυνση κατοικίας: ${currentUser.application.address}
       Τ.Κ.: ${currentUser.application.postalCode}
       Τηλέφωνο: ${currentUser.application.phoneNumber}
@@ -69,7 +70,6 @@ const Folder = () => {
           Φάκελος χρήστη
         </h1>
 
-        {/* <hr /> */}
         {currentUser && (
           <h2 style={{ fontSize: "1.5rem" }}>
             Κατάσταση αίτησης:{" "}
@@ -88,7 +88,7 @@ const Folder = () => {
                 <>
                   <p style={{ fontSize: "1.4rem" }}>Η αίτηση που υποβάλατε: </p>
                   <p style={{ fontSize: "1.4rem" }}>
-                    Κωδικός αίτησης: {currentUser.application.applicationId}:
+                    Κωδικός αίτησης: {currentUser.application.applicationId}
                   </p>
                 </>
               )}
@@ -124,6 +124,7 @@ const Folder = () => {
                   {currentUser.application.idNumber}
                 </li>
                 <li>Δήμος: {currentUser.application.municipality}</li>
+                <li>Πόλη: {currentUser.application.city}</li>
                 <li>Διεύθυνση κατοικίας: {currentUser.application.address}</li>
                 <li>Τ.Κ.: {currentUser.application.postalCode}</li>
                 <li>Τηλέφωνο: {currentUser.application.phoneNumber}</li>

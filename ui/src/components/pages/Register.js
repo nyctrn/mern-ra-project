@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.light,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -100,17 +100,9 @@ const Register = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      firstName === "" ||
-      lastName === "" ||
-      email === "" ||
-      password === ""
-    ) {
-      // setAlert("please enter all fields", "danger"); --> fix alerts
-    } else if (password !== password2) {
-      raiseError("passwords do not match");
 
-      // setAlert("password do not match", "danger"); --> fix alerts
+    if (password !== password2) {
+      raiseError("passwords do not match");
     } else {
       register({
         firstName,
@@ -157,7 +149,6 @@ const Register = (props) => {
             }
             className={classes.avatar}
           >
-            {/* <LockOutlinedIcon /> */}
             <PermIdentity />
           </Avatar>
           <Typography
@@ -310,7 +301,7 @@ const Register = (props) => {
                   float: "right",
                 }}
               >
-                {error === "user exists" && (
+                {error[0].msg === "user already exists" && (
                   <span>Υπάρχει ήδη χρήστης με τέτοιο email!</span>
                 )}
                 {error[0].msg === "wrong code" && (

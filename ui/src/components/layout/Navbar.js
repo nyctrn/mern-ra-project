@@ -151,7 +151,6 @@ const Navbar = ({ title, icon }) => {
             textTransform: "none",
             color: "#000000",
             fontSize: "1rem",
-            // fontWeight: "bold",
           }}
           color="inherit"
           onClick={onLogout}
@@ -174,7 +173,6 @@ const Navbar = ({ title, icon }) => {
           textTransform: "none",
           color: "#000000",
           fontSize: "1rem",
-          // fontWeight: "bold",
         }}
         color="inherit"
       >
@@ -189,7 +187,6 @@ const Navbar = ({ title, icon }) => {
           textTransform: "none",
           color: "#000000",
           fontSize: "1rem",
-          // fontWeight: "bold",
         }}
         color="inherit"
       >
@@ -248,7 +245,6 @@ const Navbar = ({ title, icon }) => {
                 textTransform: "none",
                 color: "#000000",
                 fontSize: "1rem",
-                // fontWeight: "bold",
               }}
               color="inherit"
             >
@@ -264,7 +260,6 @@ const Navbar = ({ title, icon }) => {
                   textTransform: "none",
                   color: "#000000",
                   fontSize: "1rem",
-                  // fontWeight: "bold",
                 }}
                 color="inherit"
               >

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.light,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -76,14 +76,11 @@ const Login = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      // setAlert("fill in all fields");  --> fix alerts
-    } else {
-      login({
-        email,
-        password,
-      });
-    }
+
+    login({
+      email,
+      password,
+    });
   };
 
   const classes = useStyles();

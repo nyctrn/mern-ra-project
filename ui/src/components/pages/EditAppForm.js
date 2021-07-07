@@ -77,10 +77,6 @@ const EditAppForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (firstName === "" || lastName === "" || email === "") {  --> !!!
-    //   setAlert("please enter all fields", "danger");
-    // } else if () {
-    //setAlert("password do not match", "danger");  --> !!!
 
     await formEdit({
       applicationId: applicationId,
@@ -105,20 +101,6 @@ const EditAppForm = () => {
 
     if (!error) {
     }
-
-    // if (error) {
-    //   console.log("test in error");
-    //   setTimeout(() => {
-    //     clearErrors();
-    //   }, 3000);
-
-    //   // setEditSuccess(true);
-    //   // setTimeout(() => {
-    //   //   setEditSuccess(false);
-    //   // }, 2000);
-    // }
-
-    // clearErrors();
   };
 
   const formFields = [

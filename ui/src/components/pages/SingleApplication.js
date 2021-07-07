@@ -31,7 +31,6 @@ const SingleApplication = ({ applicant }) => {
   const handleApplications = async (event) => {
     if (event.target.innerText === "ΕΓΚΡΙΣΗ") {
       acceptApplications({
-        // _id: applicant._id, (test for error handling)
         _id: applicant._id,
         status: "δεκτή",
       });

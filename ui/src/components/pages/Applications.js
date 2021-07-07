@@ -130,7 +130,6 @@ const Applications = (props) => {
         onClose={handleClose}
         TransitionComponent={muiState.Transition}
         message="Υπάρχει νέα αίτηση"
-        // key={muiState.Transition.name}
       />
 
       {state.single_application ? (

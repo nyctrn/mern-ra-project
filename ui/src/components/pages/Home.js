@@ -68,7 +68,6 @@ const Home = () => {
           <>
             {currentUser.title ? (
               <div>
-                {/* <h2>Admin Control Panel</h2> */}
                 <>
                   <div style={{ textAlign: "left" }}>
                     <h1 style={{ textAlign: "center" }}>
@@ -119,7 +118,6 @@ const Home = () => {
                   onClose={handleClose}
                   TransitionComponent={muiState.Transition}
                   message="Υπάρχει νέα αίτηση"
-                  // key={muiState.Transition.name}
                 />
               </div>
             ) : (
