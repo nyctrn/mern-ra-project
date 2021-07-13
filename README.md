@@ -11,7 +11,6 @@ In order to run the application locally, you will need:
 	
 	```bash
 	docker pull mongo
-
 	docker run -d  --name mongo-docker  -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=<*put a username here*> -e MONGO_INITDB_ROOT_PASSWORD=<*put a passowrd here*> mongo
 
 	```
@@ -169,7 +168,7 @@ echo '{"auths":{"ghcr.io":{"auth":"<AUTH>"}}}' | kubectl create secret generic d
 
 # Application URL & Test accounts
 
-URL: https://marioskour.cloudns.cl/
+URL: https://marioskour.cloudns.cl/ (temporary down)
 
 ## Employee test account:
 
