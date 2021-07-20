@@ -171,7 +171,7 @@ echo '{"auths":{"ghcr.io":{"auth":"<AUTH>"}}}' | kubectl create secret generic d
 
 URL: ~~https://marioskour.cloudns.cl/~~ (temporary down)
 
-The app deployed on Heroku: https://aqueous-falls-88134.herokuapp.com/
+
 
 ## Employee test account:
 
