@@ -1,6 +1,6 @@
 ## Retirement application project
 This is a MERN stack project that uses JWT for authorization and ContextAPI for state management.
-The project was deployed to a Kubernetes cluster, but a version of the application can be found on [Heroku](# Application URL & Test accounts).
+The project was deployed to a Kubernetes cluster, but a version of the application can be found on [Heroku](#application-url-&-test-accounts).
 
 
 # How to run application locally
