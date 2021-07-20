@@ -1,11 +1,12 @@
 ## Retirement application project
+This is a MERN stack project that was deployed to a Kubernetes cluster.
+
 
 # How to run application locally
 
 In order to run the application locally, you will need:
 
-- NodeJs
-- npm
+- NodeJs (+ npm)
 - Mongodb connection string (either from MongoDB Atlas or from local deployment)
 	- For fast and easy testing you can download mongodb docker image and run the container
 	
@@ -168,7 +169,9 @@ echo '{"auths":{"ghcr.io":{"auth":"<AUTH>"}}}' | kubectl create secret generic d
 
 # Application URL & Test accounts
 
-URL: https://marioskour.cloudns.cl/ (temporary down)
+URL: ~~https://marioskour.cloudns.cl/~~ (temporary down)
+
+The app deployed on Heroku: https://aqueous-falls-88134.herokuapp.com/
 
 ## Employee test account:
 
